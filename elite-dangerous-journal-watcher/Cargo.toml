@@ -1,0 +1,6 @@
+[package]
+name = "elite-dangerous-journal-watcher"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
