@@ -1,3 +1,4 @@
+use std::time::Duration;
 use futures::StreamExt;
 use tokio::spawn;
 use tracing::{error, info};
@@ -12,7 +13,7 @@ async fn main() -> Result<(), ()> {
         .expect("Argument 1 needs to be a path");
     info!("watching {}", path);
 
-    let (mut watcher, mut rx) = FileWatcher::new().await.expect("Could not create FileWatcher");
+    let (mut watcher, mut rx) = FileWatcher::new(Duration::from_millis(500), None).await.expect("Could not create FileWatcher");
 
     watcher.add_path(path).expect("Could not add path");
 

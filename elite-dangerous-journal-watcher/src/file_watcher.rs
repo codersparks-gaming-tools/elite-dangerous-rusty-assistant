@@ -1,23 +1,23 @@
+use futures::{channel::mpsc::{channel, Receiver}, SinkExt};
+use notify::{RecommendedWatcher, RecursiveMode};
+use notify_debouncer_full::{new_debouncer, DebounceEventResult, Debouncer, RecommendedCache};
 use std::path::Path;
-use notify::{recommended_watcher, Event, RecommendedWatcher, RecursiveMode, Watcher};
-use futures::{channel::mpsc::{Receiver, channel}, SinkExt};
+use std::time::Duration;
 
 pub struct FileWatcher {
-    watcher: RecommendedWatcher,
+    watcher: Debouncer<RecommendedWatcher, RecommendedCache>,
 }
 
 
 impl FileWatcher {
-    pub async fn new() -> notify::Result<(FileWatcher, Receiver<notify::Result<Event>>)> {
+    pub async fn new(timeout: Duration, tick_rate: Option<Duration>) -> notify::Result<(FileWatcher, Receiver<DebounceEventResult>)> {
         let (mut tx, rx) = channel(1);
 
-        // Automatically select the best implementation for your platform.
-        // You can also access each implementation directly e.g. INotifyWatcher.
-        let watcher = recommended_watcher(move |res| {
-            futures::executor::block_on(async {
-                tx.send(res).await.unwrap();
-            })
-        })?;
+        let watcher = new_debouncer(
+            timeout,tick_rate, move |res| {
+                futures::executor::block_on(async { tx.send(res).await.unwrap() })
+            }
+        ).expect("failed to create deboucer watcher");
 
         let file_watcher = FileWatcher { watcher };
 

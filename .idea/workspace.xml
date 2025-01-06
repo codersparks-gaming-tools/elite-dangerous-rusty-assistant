@@ -7,13 +7,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/examples/file_watcher.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/elite_journal_watcher.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/file_watcher.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Implemented file watcher with Recommended Watcher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/examples/file_watcher.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/examples/file_watcher.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/file_watcher.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/file_watcher.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08375727" />
-      <window_info id="Commit" order="1" weight="0.25" />
+      <window_info id="Commit" order="1" weight="0.08375727" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -97,7 +95,7 @@
       <window_info anchor="bottom" id="File Transfer" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
-      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Problems View" order="2" weight="0.29664856" />
       <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.29664856" />
       <window_info anchor="bottom" id="Services" order="4" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.29664856" />
@@ -147,12 +145,25 @@
       <workItem from="1735641348043" duration="2921000" />
       <workItem from="1735728465418" duration="896000" />
       <workItem from="1736167002715" duration="3465000" />
-      <workItem from="1736177239915" duration="5862000" />
+      <workItem from="1736177239915" duration="7562000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
+      <option name="closed" value="true" />
+      <created>1736184555570</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736184555570</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented file watcher with Recommended Watcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented file watcher with Recommended Watcher" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
