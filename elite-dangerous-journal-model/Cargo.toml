@@ -1,0 +1,15 @@
+[package]
+name = "elite-dangerous-journal-model"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tracing = "0.1.41"
+serde = { version = "1", features = ["derive"] }
+chrono = "0.4"
+serde_with = {  version = "3", features = ["chrono"] }
+regex = "1.11.1"
+
+[dev-dependencies]
+serde_json = "1"
+tracing-subscriber = "0.3.19"
