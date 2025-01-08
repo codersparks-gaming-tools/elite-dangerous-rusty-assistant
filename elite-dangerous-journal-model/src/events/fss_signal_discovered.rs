@@ -1,6 +1,7 @@
-use chrono::NaiveDateTime;
+
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
+use crate::events::EventMeta;
 
 /// Enum to represent the signal type
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -60,10 +61,9 @@ pub enum FssSignalType {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct FSSSignalDiscoveredEvent {
-    /// Timestamp the event was received
-    #[serde_as(as="chrono::DateTime<chrono::Utc>")]
-    #[serde(rename = "timestamp")]
-    pub timestamp: NaiveDateTime,
+    /// The event metadata
+    #[serde(flatten)]
+    pub event_meta: EventMeta,
 
     /// The internal system address reference for the system
     pub system_address: u64,

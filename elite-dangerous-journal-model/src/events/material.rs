@@ -1,6 +1,7 @@
-use chrono::NaiveDateTime;
+
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
+use crate::events::EventMeta;
 
 /// The materials event give the current materials that the commander has in their inventory
 ///
@@ -54,10 +55,9 @@ use serde_with::serde_as;
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct MaterialsEvent {
-    /// Timestamp that the event was received
-    #[serde_as(as = "chrono::DateTime<chrono::Utc>")]
-    #[serde(rename="timestamp")]
-    pub timestamp: NaiveDateTime,
+    /// The event metadata
+    #[serde(flatten)]
+    pub event_meta: EventMeta,
     /// List of all the [Raw Materials](https://elite-dangerous.fandom.com/wiki/Raw_Materials) in the commanders inventory
     #[serde(default)]
     pub raw: Vec<RawMaterial>,
