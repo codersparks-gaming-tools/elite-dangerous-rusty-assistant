@@ -141,7 +141,7 @@ mod tests {
             name_localised: "Atypical Disrupted Wake Echoes".to_string(),
         };
 
-        assert_eq!(timestamp, event.timestamp);
+        assert_eq!(timestamp, event.event_meta.timestamp);
         assert_eq!(event.raw.len(), 2);
         assert!(event.raw.contains(&raw1));
         assert!(event.raw.contains(&raw2));
@@ -187,7 +187,7 @@ mod tests {
             name_localised: "Atypical Disrupted Wake Echoes".to_string(),
         };
 
-        assert_eq!(timestamp, event.timestamp);
+        assert_eq!(timestamp, event.event_meta.timestamp);
         assert_eq!(event.raw.len(), 0);
         assert_eq!(event.manufactured.len(), 2);
         assert!(event.manufactured.contains(&manufactured1));
@@ -232,7 +232,7 @@ mod tests {
             name_localised: "Atypical Disrupted Wake Echoes".to_string(),
         };
 
-        assert_eq!(timestamp, event.timestamp);
+        assert_eq!(timestamp, event.event_meta.timestamp);
         assert_eq!(event.raw.len(), 0);
         assert_eq!(event.manufactured.len(), 2);
         assert!(event.manufactured.contains(&manufactured1));

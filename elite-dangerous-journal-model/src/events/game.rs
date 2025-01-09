@@ -137,7 +137,7 @@ pub struct FileHeaderEvent {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::game::{GameMode, LoadGameEvent};
+    use crate::events::game::{FileHeaderEvent, GameMode, LoadGameEvent};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]
@@ -150,7 +150,7 @@ mod tests {
 
         let event : LoadGameEvent  = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.horizons, true);
         assert_eq!(event.odyssey, true);
         assert_eq!(event.fid, "F00000000");
@@ -179,7 +179,7 @@ mod tests {
 
         let event : LoadGameEvent  = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.horizons, true);
         assert_eq!(event.odyssey, true);
         assert_eq!(event.fid, "F00000000");
@@ -209,7 +209,7 @@ mod tests {
 
         let event : LoadGameEvent  = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.horizons, true);
         assert_eq!(event.odyssey, true);
         assert_eq!(event.fid, "F00000000");
@@ -239,7 +239,7 @@ mod tests {
 
         let event : LoadGameEvent  = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.horizons, true);
         assert_eq!(event.odyssey, true);
         assert_eq!(event.fid, "F00000000");
@@ -272,6 +272,6 @@ mod tests {
         assert_eq!(event.odyssey, true);
         assert_eq!(event.game_meta.game_version, "4.0.0.1904");
         assert_eq!(event.game_meta.build, "r308767/r0 ");
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
     }
 }

@@ -8,7 +8,7 @@ use crate::events::EventMeta;
 pub enum FssSignalType {
     /// The signal is a fleet carrier
     FleetCarrier,
-    /// The signal is a Resource Extration location
+    /// The signal is a Resource Extraction location
     ResourceExtraction,
     /// The signal is a Codex signal
     Codex,
@@ -35,7 +35,7 @@ pub enum FssSignalType {
     MagaShip,
     /// The signal is an outpost
     Outpost,
-    /// The signal is a Geenric type
+    /// The signal is a Generic type
     Generic,
     /// The signal type has not yet been implemented but is captured as a string
     #[serde(untagged)]
@@ -91,7 +91,7 @@ mod tests {
 
         let event: FSSSignalDiscoveredEvent = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.signal_name, String::from("REIDEN LAKE V5M-WTH"));
         assert_eq!(event.signal_type, FssSignalType::FleetCarrier);
         assert_eq!(event.localised_signal_name, None);
@@ -107,7 +107,7 @@ mod tests {
 
         let event: FSSSignalDiscoveredEvent = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.signal_name, "$MULTIPLAYER_SCENARIO78_TITLE;");
         assert_eq!(event.signal_type, FssSignalType::ResourceExtraction);
         assert_eq!(event.is_station, None);
@@ -115,14 +115,14 @@ mod tests {
     }
 
     #[test]
-    fn test_deserialize_fss_signal_discovered_unkown_signal_type() {
+    fn test_deserialize_fss_signal_discovered_unknown_signal_type() {
         let timestamp_str = "2025-01-04T19:27:38Z";
         let timestamp = create_timestamp(timestamp_str);
         let json = format!(r#"{{ "timestamp":"{timestamp_str}", "event":"FSSSignalDiscovered", "SystemAddress":3107241104074, "SignalName":"REIDEN LAKE V5M-WTH", "SignalType":"WibbleFish", "IsStation":true }}"#);
 
         let event: FSSSignalDiscoveredEvent = serde_json::from_str(&json).unwrap();
 
-        assert_eq!(event.timestamp, timestamp);
+        assert_eq!(event.event_meta.timestamp, timestamp);
         assert_eq!(event.signal_name, String::from("REIDEN LAKE V5M-WTH"));
         assert_eq!(event.signal_type, FssSignalType::Unknown(String::from("WibbleFish")));
         assert_eq!(event.is_station, Some(true));

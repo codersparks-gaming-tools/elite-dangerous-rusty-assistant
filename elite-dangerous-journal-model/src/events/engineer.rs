@@ -118,7 +118,7 @@ mod tests {
     }
 
     #[test]
-    fn deserialize_event() {
+    fn deserialize_event_multiple_engineers() {
         let timestamp_str = "2025-01-04T19:27:09Z";
         let timestamp: NaiveDateTime = create_timestamp(timestamp_str);
         let json = format!(r#"{{ "timestamp":"{timestamp_str}", "event":"EngineerProgress", "Engineers":[ {{ "Engineer":"Felicity Farseer", "EngineerID":300100, "Progress":"Unlocked", "RankProgress":14, "Rank":4 }}, {{ "Engineer":"Eleanor Bresa", "EngineerID":400011, "Progress":"Known" }} ] }}"#);
@@ -141,7 +141,7 @@ mod tests {
             rank: None,
         };
 
-        assert_eq!(timestamp, event.timestamp);
+        assert_eq!(timestamp, event.event_meta.timestamp);
         assert_eq!(event.engineers.len(), 2);
         assert!(event.engineers.contains(&engineer1));
         assert!(event.engineers.contains(&engineer2));

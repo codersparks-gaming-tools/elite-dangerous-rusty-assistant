@@ -7,22 +7,14 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Started to added events to be processed">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="More progress on mapping events">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/commander.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/commander.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/file_header.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/fss_signal_discovered.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/fss_signal_discovered.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/material.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/progress.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/rank.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/reputation.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +68,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Cargo.Build `Test events::engineer::tests::test_deserialize_single_engineer_known`.executor": "Run",
     "Cargo.Build `Test file_header::tests`.executor": "Run",
+    "Cargo.List events - scratch.executor": "Run",
     "Cargo.List events.executor": "Run",
     "Cargo.Run list_events.executor": "Run",
     "Cargo.Test commander::tests.executor": "Run",
@@ -100,6 +93,8 @@
     "Cargo.Test progress::tests.executor": "Run",
     "Cargo.Test rank::tests.executor": "Run",
     "Cargo.Test reputation::tests.executor": "Run",
+    "Cargo.Test.executor": "Run",
+    "Cargo.clean.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
@@ -127,9 +122,9 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11319041" />
-      <window_info id="Commit" order="1" weight="0.07503633" />
-      <window_info active="true" id="Structure" order="2" side_tool="true" visible="true" weight="0.11319041" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.107376456" />
+      <window_info id="Commit" order="1" weight="0.056867734" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="TODO" />
@@ -140,8 +135,8 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.29664856" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.33016306" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33016306" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.29664856" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.29664856" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -151,7 +146,7 @@
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
       <window_info anchor="right" id="Cargo" order="5" weight="0.2" />
-      <window_info anchor="right" id="RustCargo" order="6" weight="0.2" />
+      <window_info active="true" anchor="right" id="RustCargo" order="6" visible="true" weight="0.33012354" />
     </layout>
   </component>
   <component name="RecentsManager">
@@ -165,7 +160,12 @@
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.List events">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="cargo  clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Cargo.List events - scratch">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -175,6 +175,26 @@
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
       <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="List events - scratch" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="buildProfileId" value="dev" />
+      <option name="command" value="run --example list_events -- $PROJECT_DIR$/scratch/" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs>
+        <env name="RUST_LOG" value="INFO" />
+      </envs>
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="withSudo" value="false" />
       <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
@@ -271,8 +291,26 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::game::tests::test_deserialize_load_game_event_solo" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::game::tests::test_deserialize_load_game_event_solo -- --exact" />
+    <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
+      <option name="buildProfileId" value="test" />
+      <option name="command" value="test" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="clean" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -290,20 +328,22 @@
     </configuration>
     <list>
       <item itemvalue="Cargo.Build" />
+      <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
+      <item itemvalue="Cargo.List events - scratch" />
+      <item itemvalue="Cargo.clean" />
       <item itemvalue="Cargo.Test commander::tests" />
       <item itemvalue="Cargo.Test events::commander::tests::test_deserialize_rank_event" />
       <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_group" />
       <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_open" />
-      <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_solo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.clean" />
         <item itemvalue="Cargo.Test commander::tests" />
         <item itemvalue="Cargo.Test events::commander::tests::test_deserialize_rank_event" />
         <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_group" />
         <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_open" />
-        <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_solo" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +364,8 @@
       <workItem from="1736177239915" duration="8221000" />
       <workItem from="1736241727336" duration="3717000" />
       <workItem from="1736251141260" duration="22829000" />
-      <workItem from="1736350918519" duration="10021000" />
+      <workItem from="1736350918519" duration="10073000" />
+      <workItem from="1736437727561" duration="2881000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -350,7 +391,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736274823973</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="More progress on mapping events">
+      <option name="closed" value="true" />
+      <created>1736361887417</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1736361887417</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +408,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented file watcher with Recommended Watcher" />
     <MESSAGE value="Started to added events to be processed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started to added events to be processed" />
+    <MESSAGE value="More progress on mapping events" />
+    <option name="LAST_COMMIT_MESSAGE" value="More progress on mapping events" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

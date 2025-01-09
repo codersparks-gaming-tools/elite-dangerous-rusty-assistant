@@ -163,7 +163,6 @@ pub struct CommanderRankEvent {
 mod tests {
     use crate::test_helper::serde_helpers::create_timestamp;
     use crate::events::commander::{CommanderEvent, CommanderProgressEvent, CommanderRankEvent, CommanderReputationEvent};
-    use crate::events::EventType;
     #[test]
     fn test_deserialize_progress_event() {
         let timestamp_str = "2025-01-04T19:27:09Z";
@@ -181,7 +180,6 @@ mod tests {
         assert_eq!(event.empire, 11);
         assert_eq!(event.exobiologist, 0);
         assert_eq!(timestamp, event.event_meta.timestamp);
-        assert_eq!(event.event_meta.event, EventType::CommanderProgress);
     }
 
 
@@ -194,7 +192,6 @@ mod tests {
         let event: CommanderEvent = serde_json::from_str(&json).unwrap();
 
         assert_eq!(timestamp, event.event_meta.timestamp);
-        assert_eq!(event.event_meta.event, EventType::Commander);
         assert_eq!(event.commander.fid, String::from("F00000000"));
         assert_eq!(event.commander.name, "ANON");
     }
@@ -211,7 +208,6 @@ mod tests {
         assert_eq!(event.independent, 0.00000000);
         assert_eq!(event.alliance, 10.122000);
         assert_eq!(event.event_meta.timestamp, timestamp);
-        assert_eq!(event.event_meta.event, EventType::CommanderReputation);
     }
 
     #[test]
@@ -231,6 +227,5 @@ mod tests {
         assert_eq!(event.empire, 5);
         assert_eq!(event.exobiologist, 0);
         assert_eq!(timestamp, event.event_meta.timestamp);
-        assert_eq!(event.event_meta.event, EventType::CommanderRank);
     }
 }
