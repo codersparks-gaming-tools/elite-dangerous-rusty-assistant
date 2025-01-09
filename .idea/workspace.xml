@@ -7,14 +7,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="More progress on mapping events">
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="more progress and fixing warnings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/commander.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/commander.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/fss_signal_discovered.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/fss_signal_discovered.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/material.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="journal_watcher" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,6 +70,8 @@
     "Cargo.Test commander::tests.executor": "Run",
     "Cargo.Test engineer::tests.executor": "Run",
     "Cargo.Test events::commander::tests::test_deserialize_rank_event.executor": "Run",
+    "Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers.executor": "Run",
+    "Cargo.Test events::engineer::tests::deserialize_event_single_engineer.executor": "Run",
     "Cargo.Test events::engineer::tests::test_deserialize_single_engineer_known.executor": "Run",
     "Cargo.Test events::file_header::tests::test_deserialize.executor": "Run",
     "Cargo.Test events::file_header::tests::test_serialize.executor": "Run",
@@ -98,7 +96,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "journal__watcher",
+    "git-widget-placeholder": "journal__watcher__single__engineer",
     "last_opened_file_path": "/home/sparks/dev/elite/elite-dangerous-rusty-assistant/scratch/Elite Dangerous - Journal",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -123,7 +121,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.107376456" />
-      <window_info id="Commit" order="1" weight="0.056867734" />
+      <window_info id="Commit" order="1" weight="0.107376456" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -165,7 +163,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.List events - scratch">
+  <component name="RunManager" selected="Cargo.Test">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -189,7 +187,7 @@
       <option name="command" value="run --example list_events -- $PROJECT_DIR$/scratch/" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs>
-        <env name="RUST_LOG" value="INFO" />
+        <env name="RUST_LOG" value="ERROR" />
       </envs>
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -239,9 +237,9 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::commander::tests::test_deserialize_rank_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+    <configuration name="Test engineer::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="buildProfileId" value="test" />
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::commander::tests::test_deserialize_rank_event -- --exact" />
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::engineer::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -257,8 +255,9 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::game::tests::test_deserialize_load_game_event_group" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::game::tests::test_deserialize_load_game_event_group -- --exact" />
+    <configuration name="Test events::engineer::tests::deserialize_event_multiple_engineers" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="buildProfileId" value="test" />
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::engineer::tests::deserialize_event_multiple_engineers -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -274,8 +273,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::game::tests::test_deserialize_load_game_event_open" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::game::tests::test_deserialize_load_game_event_open -- --exact" />
+    <configuration name="Test events::engineer::tests::deserialize_event_single_engineer" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::engineer::tests::deserialize_event_single_engineer -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -331,19 +330,19 @@
       <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
       <item itemvalue="Cargo.List events - scratch" />
+      <item itemvalue="Cargo.Test engineer::tests" />
+      <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers" />
+      <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_single_engineer" />
       <item itemvalue="Cargo.clean" />
       <item itemvalue="Cargo.Test commander::tests" />
-      <item itemvalue="Cargo.Test events::commander::tests::test_deserialize_rank_event" />
-      <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_group" />
-      <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_open" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test engineer::tests" />
+        <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_single_engineer" />
+        <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers" />
         <item itemvalue="Cargo.clean" />
         <item itemvalue="Cargo.Test commander::tests" />
-        <item itemvalue="Cargo.Test events::commander::tests::test_deserialize_rank_event" />
-        <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_group" />
-        <item itemvalue="Cargo.Test events::game::tests::test_deserialize_load_game_event_open" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +364,7 @@
       <workItem from="1736241727336" duration="3717000" />
       <workItem from="1736251141260" duration="22829000" />
       <workItem from="1736350918519" duration="10073000" />
-      <workItem from="1736437727561" duration="2881000" />
+      <workItem from="1736437727561" duration="7385000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -399,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736361887417</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="more progress and fixing warnings">
+      <option name="closed" value="true" />
+      <created>1736441173871</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736441173871</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +416,8 @@
     <MESSAGE value="Implemented file watcher with Recommended Watcher" />
     <MESSAGE value="Started to added events to be processed" />
     <MESSAGE value="More progress on mapping events" />
-    <option name="LAST_COMMIT_MESSAGE" value="More progress on mapping events" />
+    <MESSAGE value="more progress and fixing warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="more progress and fixing warnings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

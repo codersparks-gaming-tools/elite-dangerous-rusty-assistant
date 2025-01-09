@@ -16,7 +16,7 @@ fn main() {
     let paths = std::env::args().skip(1).collect::<Vec<_>>();
 
     info!("Paths: {:?}", paths);
-    let mut unknown_count = 0;
+    let unknown_count = 0;
     let mut unknown_signal_types = HashSet::new();
 
     paths.iter().for_each(|path_string| {
@@ -39,7 +39,7 @@ fn main() {
     }
 }
 
-fn process_path(mut unknown_count: i32, mut unknown_signal_types: &mut HashSet<String>, path: &PathBuf) {
+fn process_path(mut unknown_count: i32, unknown_signal_types: &mut HashSet<String>, path: &PathBuf) {
 
     let metadata = metadata(path).unwrap();
 

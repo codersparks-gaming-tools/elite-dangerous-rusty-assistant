@@ -1,7 +1,9 @@
 
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Deserializer, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 use serde_with::serde_as;
+use tracing::debug;
+use crate::events::engineer::EngineerData::{Multiple, Single};
 use crate::events::EventMeta;
 
 /// The current state of the relation ship of the commander with this engineer
@@ -45,9 +47,15 @@ pub struct Engineer {
     pub engineer: String,
     #[serde(rename = "EngineerID")]
     pub engineer_id: u32,
-    pub progress: EngineerProgress,
+    pub progress: Option<EngineerProgress>,
     pub rank_progress: Option<u32>,
     pub rank: Option<EngineerRank>,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+pub enum EngineerData {
+    Single(Engineer),
+    Multiple(Vec<Engineer>),
 }
 
 /// An event that represents the current relationship status with the engineers
@@ -73,21 +81,88 @@ pub struct Engineer {
 ///   ]
 /// }
 /// ```
+///
+/// Apparently there are two forms of this event, the above with multiple engineers but also a single engineer:
+///
+/// ```json
+/// {
+///   "timestamp": "2025-01-06T20:07:22Z",
+///   "event": "EngineerProgress",
+///   "Engineer": "Marco Qwent",
+///   "EngineerID": 300200,
+///   "Progress": "Invited"
+/// }
+///```
+///
 #[serde_as]
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct EngineerProgressEvent {
     /// The event metadata
     #[serde(flatten)]
     pub event_meta: EventMeta,
-    /// List of engineers
-    pub engineers: Vec<Engineer>,
+    /// The engineer data
+    #[serde(flatten)]
+    pub data: EngineerData,
+}
+
+impl<'de> Deserialize<'de> for EngineerProgressEvent {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>
+    {
+        #[derive(Deserialize, Debug)]
+        #[serde(rename_all = "PascalCase")]
+        struct EngineerHelper {
+            #[serde(flatten)]
+            event_meta: EventMeta,
+            engineer: Option<String>,
+            #[serde(rename = "EngineerID")]
+            engineer_id: Option<u32>,
+            progress: Option<EngineerProgress>,
+            rank_progress: Option<u32>,
+            rank: Option<EngineerRank>,
+            engineers: Option<Vec<Engineer>>,
+        }
+
+        let helper = EngineerHelper::deserialize(deserializer)?;
+
+        debug!("EngineerHelper interim value: {:?}", helper);
+
+        if helper.engineers.is_some() {
+            if helper.engineer_id.is_some() || helper.rank_progress.is_some() || helper.rank.is_some() || helper.engineer.is_some() {
+                Err(serde::de::Error::custom("Both engineers and single cannot be represented"))
+            } else {
+                Ok(Self{
+                    event_meta: helper.event_meta,
+                    data: Multiple(helper.engineers.unwrap().clone()),
+                })
+            }
+        } else {
+            // To be a valid engineer it has to have the three fields set
+            if helper.engineer_id.is_some() && helper.engineer.is_some() {
+                let engineer = Engineer {
+                    engineer: helper.engineer.unwrap(),
+                    engineer_id: helper.engineer_id.unwrap(),
+                    progress: helper.progress,
+                    rank_progress: helper.rank_progress,
+                    rank: helper.rank,
+                };
+                Ok(Self{
+                    event_meta: helper.event_meta,
+                    data: Single(engineer)
+                })
+            } else {
+                Err(serde::de::Error::custom("Engineers not present and one of engineer_id, engineer or progress is not supplied"))
+            }
+        }
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use chrono::NaiveDateTime;
-    use crate::events::engineer::{Engineer, EngineerProgressEvent, EngineerProgress, EngineerRank};
+    use crate::events::engineer::{Engineer, EngineerProgressEvent, EngineerProgress, EngineerRank, EngineerData};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]
@@ -99,7 +174,7 @@ mod tests {
 
         assert_eq!(engineer.engineer, "Felicity Farseer");
         assert_eq!(engineer.engineer_id, 300100u32);
-        assert_eq!(engineer.progress, EngineerProgress::Unlocked);
+        assert_eq!(engineer.progress, Some(EngineerProgress::Unlocked));
         assert_eq!(engineer.rank_progress, Some(14u32));
         assert_eq!(engineer.rank, Some(EngineerRank::Four));
     }
@@ -112,7 +187,7 @@ mod tests {
 
         assert_eq!(engineer.engineer, "Eleanor Bresa");
         assert_eq!(engineer.engineer_id, 400011u32);
-        assert_eq!(engineer.progress, EngineerProgress::Known);
+        assert_eq!(engineer.progress, Some(EngineerProgress::Known));
         assert_eq!(engineer.rank_progress, None);
         assert_eq!(engineer.rank, None);
     }
@@ -128,7 +203,7 @@ mod tests {
         let engineer1 = Engineer {
             engineer: "Felicity Farseer".to_string(),
             engineer_id: 300100u32,
-            progress: EngineerProgress::Unlocked,
+            progress: Some(EngineerProgress::Unlocked),
             rank_progress: Some(14u32),
             rank: Some(EngineerRank::Four),
         };
@@ -136,14 +211,38 @@ mod tests {
         let engineer2 = Engineer {
             engineer: "Eleanor Bresa".to_string(),
             engineer_id: 400011u32,
-            progress: EngineerProgress::Known,
+            progress: Some(EngineerProgress::Known),
             rank_progress: None,
             rank: None,
         };
 
         assert_eq!(timestamp, event.event_meta.timestamp);
-        assert_eq!(event.engineers.len(), 2);
-        assert!(event.engineers.contains(&engineer1));
-        assert!(event.engineers.contains(&engineer2));
+        match event.data {
+            EngineerData::Multiple (engineers) => {
+                assert_eq!(engineers.len(), 2);
+                assert!(engineers.contains(&engineer1));
+                assert!(engineers.contains(&engineer2));
+            }
+            _ => panic!("Wrong type of data for engineer, expected multiple but got {:?}", event.data),
+        }
+    }
+
+    #[test]
+    pub fn deserialize_event_single_engineer() {
+        let timestamp_str = "2025-01-04T19:27:09Z";
+        let timestamp: NaiveDateTime = create_timestamp(timestamp_str);
+        let json = format!(r#"{{ "timestamp":"{timestamp_str}", "event":"EngineerProgress", "Engineer":"Marco Qwent", "EngineerID":300200, "Progress":"Invited" }}"#);
+
+        let event : EngineerProgressEvent = serde_json::from_str(&json).unwrap();
+
+        assert_eq!(event.event_meta.timestamp, timestamp);
+        match event.data {
+            EngineerData::Single(engineer) => {
+                assert_eq!(engineer.engineer, "Marco Qwent");
+                assert_eq!(engineer.engineer_id, 300200u32);
+                assert_eq!(engineer.progress, Some(EngineerProgress::Invited));
+            }
+            _ => panic!("Wrong type of data for engineer, expected single engineer but got {:?}", event.data),
+        }
     }
 }
