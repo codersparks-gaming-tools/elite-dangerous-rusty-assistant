@@ -14,6 +14,7 @@ use crate::events::engineer::EngineerProgressEvent;
 use crate::events::fss_signal_discovered::FSSSignalDiscoveredEvent;
 use crate::events::game::{FileHeaderEvent, LoadGameEvent};
 use crate::events::material::MaterialsEvent;
+use crate::events::music::MusicEvent;
 
 /// The journal event enum allows the deserialisation of the events from the elite dangerous journal log
 /// It uses the ```event``` json field to determine what enum variant to load and then completes the data
@@ -40,6 +41,8 @@ pub enum JournalEvent {
     LoadGame(LoadGameEvent),
     /// Engineer event
     EngineerProgress(EngineerProgressEvent),
+    /// Music event
+    Music(MusicEvent),
     /// This is a catch all for any other event in the file to allow iterative development and also should frontier add an event in the future
     #[serde(other)]
     Unknown,

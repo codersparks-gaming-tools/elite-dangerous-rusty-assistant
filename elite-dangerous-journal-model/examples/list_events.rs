@@ -16,12 +16,12 @@ fn main() {
     let paths = std::env::args().skip(1).collect::<Vec<_>>();
 
     info!("Paths: {:?}", paths);
-    let unknown_count = 0;
+    let mut unknown_count = 0;
     let mut unknown_signal_types = HashSet::new();
 
     paths.iter().for_each(|path_string| {
         let path= PathBuf::from(path_string);
-        process_path(unknown_count, &mut unknown_signal_types, &path)
+        process_path(&mut unknown_count, &mut unknown_signal_types, &path)
     });
 
     if unknown_count > 0 {
@@ -39,7 +39,7 @@ fn main() {
     }
 }
 
-fn process_path(mut unknown_count: i32, unknown_signal_types: &mut HashSet<String>, path: &PathBuf) {
+fn process_path(unknown_count: &mut i32, unknown_signal_types: &mut HashSet<String>, path: &PathBuf) {
 
     let metadata = metadata(path).unwrap();
 
@@ -70,7 +70,7 @@ fn process_path(mut unknown_count: i32, unknown_signal_types: &mut HashSet<Strin
 
                     match event {
                         JournalEvent::Unknown => {
-                            unknown_count += 1;
+                            *unknown_count += 1;
                             warn!("Unknown event {}", event_num + 1);
                         }
                         JournalEvent::FSSSignalDiscovered(event) => match event.signal_type {

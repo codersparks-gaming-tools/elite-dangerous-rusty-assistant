@@ -14,25 +14,7 @@ pub mod engineer;
 pub mod game;
 /// Contains structs to represent ship events
 pub mod ship;
-
-// /// Enum to hold the different event types there are
-// #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-// #[serde(rename_all="PascalCase")]
-// pub enum EventType {
-//     Commander,
-//     #[serde(rename = "Progress")]
-//     CommanderProgress,
-//     #[serde(rename = "Rank")]
-//     CommanderRank,
-//     #[serde(rename = "Reputation")]
-//     CommanderReputation,
-//     EngineerProgress,
-//     #[serde(rename = "Fileheader")]
-//     FileHeader,
-//     FSSSignalDiscovered,
-//     LoadGame,
-//     Materials,
-// }
+pub mod music;
 
 #[serde_as]
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]

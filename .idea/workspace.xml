@@ -7,10 +7,12 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="more progress and fixing warnings">
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Implemented Engineer multiple and single type event">
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/music.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,10 +86,13 @@
     "Cargo.Test events::material::tests::test_deserialize_commander_event.executor": "Run",
     "Cargo.Test events::material::tests::test_deserialize_commander_event_empty_raw.executor": "Run",
     "Cargo.Test events::material::tests::test_deserialize_commander_event_missing_raw.executor": "Run",
+    "Cargo.Test events::music::tests::test_music_main_menu.executor": "Run",
+    "Cargo.Test events::music::tests::test_music_unknown_track.executor": "Run",
     "Cargo.Test events::rank::tests::test_deserialize_rank_event.executor": "Run",
     "Cargo.Test file_header::tests.executor": "Run",
     "Cargo.Test fss_signal_discovered::tests.executor": "Run",
     "Cargo.Test material::tests.executor": "Run",
+    "Cargo.Test music::tests.executor": "Run",
     "Cargo.Test progress::tests.executor": "Run",
     "Cargo.Test rank::tests.executor": "Run",
     "Cargo.Test reputation::tests.executor": "Run",
@@ -96,7 +101,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "journal__watcher__single__engineer",
+    "git-widget-placeholder": "journal__watcher",
     "last_opened_file_path": "/home/sparks/dev/elite/elite-dangerous-rusty-assistant/scratch/Elite Dangerous - Journal",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -120,8 +125,8 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.107376456" />
-      <window_info id="Commit" order="1" weight="0.107376456" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10010901" />
+      <window_info id="Commit" order="1" weight="0.053960755" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -133,8 +138,8 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.29664856" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.29664856" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.29664856" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.33016306" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33016306" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -144,7 +149,7 @@
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
       <window_info anchor="right" id="Cargo" order="5" weight="0.2" />
-      <window_info active="true" anchor="right" id="RustCargo" order="6" visible="true" weight="0.33012354" />
+      <window_info anchor="right" id="RustCargo" order="6" weight="0.16624273" />
     </layout>
   </component>
   <component name="RecentsManager">
@@ -163,7 +168,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test">
+  <component name="RunManager" selected="Cargo.List events">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -187,7 +192,7 @@
       <option name="command" value="run --example list_events -- $PROJECT_DIR$/scratch/" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs>
-        <env name="RUST_LOG" value="ERROR" />
+        <env name="RUST_LOG" value="INFO" />
       </envs>
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -206,24 +211,9 @@
       <option name="buildProfileId" value="dev" />
       <option name="command" value="run --example list_events -- $PROJECT_DIR$/elite-dangerous-journal-model/examples/Journal.2025-01-04T185730.01.log" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test commander::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::commander::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
+      <envs>
+        <env name="RUST_LOG" value="DEBUG" />
+      </envs>
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -240,24 +230,6 @@
     <configuration name="Test engineer::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="buildProfileId" value="test" />
       <option name="command" value="test --package elite-dangerous-journal-model --lib events::engineer::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test events::engineer::tests::deserialize_event_multiple_engineers" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="buildProfileId" value="test" />
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::engineer::tests::deserialize_event_multiple_engineers -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -290,9 +262,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
-      <option name="buildProfileId" value="test" />
-      <option name="command" value="test" />
+    <configuration name="Test events::music::tests::test_music_main_menu" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::music::tests::test_music_main_menu -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -308,8 +279,44 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="clean" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="clean" />
+    <configuration name="Test events::music::tests::test_music_unknown_track" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="buildProfileId" value="test" />
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::music::tests::test_music_unknown_track -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test music::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::music::tests" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
+      <option name="buildProfileId" value="dev" />
+      <option name="command" value="test" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -330,19 +337,19 @@
       <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
       <item itemvalue="Cargo.List events - scratch" />
+      <item itemvalue="Cargo.Test events::music::tests::test_music_main_menu" />
+      <item itemvalue="Cargo.Test events::music::tests::test_music_unknown_track" />
+      <item itemvalue="Cargo.Test music::tests" />
       <item itemvalue="Cargo.Test engineer::tests" />
-      <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers" />
       <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_single_engineer" />
-      <item itemvalue="Cargo.clean" />
-      <item itemvalue="Cargo.Test commander::tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test music::tests" />
+        <item itemvalue="Cargo.Test events::music::tests::test_music_main_menu" />
+        <item itemvalue="Cargo.Test events::music::tests::test_music_unknown_track" />
         <item itemvalue="Cargo.Test engineer::tests" />
         <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_single_engineer" />
-        <item itemvalue="Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers" />
-        <item itemvalue="Cargo.clean" />
-        <item itemvalue="Cargo.Test commander::tests" />
       </list>
     </recent_temporary>
   </component>
@@ -365,6 +372,7 @@
       <workItem from="1736251141260" duration="22829000" />
       <workItem from="1736350918519" duration="10073000" />
       <workItem from="1736437727561" duration="7385000" />
+      <workItem from="1736515770983" duration="1477000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
