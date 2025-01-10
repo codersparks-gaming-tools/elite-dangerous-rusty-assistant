@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 use crate::events::EventMeta;
 
+/// What this music event is for
 #[derive(Debug,Serialize, Deserialize, Clone, PartialEq)]
 pub enum Music {
     /// Music track for codex
@@ -42,6 +43,7 @@ pub enum Music {
 
 }
 
+/// A music event
 #[derive(Debug,Serialize, Deserialize, Clone, PartialEq)]
 #[serde(rename_all = "PascalCase")]
 pub struct MusicEvent {

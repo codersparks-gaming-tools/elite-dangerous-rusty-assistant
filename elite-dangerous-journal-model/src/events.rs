@@ -14,8 +14,10 @@ pub mod engineer;
 pub mod game;
 /// Contains structs to represent ship events
 pub mod ship;
+/// Contains structs to represent music events
 pub mod music;
 
+/// A common struct that is present in all events
 #[serde_as]
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub struct EventMeta {

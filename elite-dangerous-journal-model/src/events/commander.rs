@@ -31,6 +31,7 @@ pub struct CommanderEvent {
     #[serde(flatten)]
     pub event_meta: EventMeta,
 
+    /// Details about the commander
     #[serde(flatten)]
     pub commander: Commander,
 }

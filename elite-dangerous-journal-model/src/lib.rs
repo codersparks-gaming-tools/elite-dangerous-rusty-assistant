@@ -1,4 +1,4 @@
-
+#![warn(missing_docs)]
 //! Provide model structs for use with parsing of the elite dangerous journal logs
 
 

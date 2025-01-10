@@ -9,8 +9,11 @@ use crate::events::EventMeta;
 /// The current state of the relation ship of the commander with this engineer
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub enum EngineerProgress {
+    /// This engineer is known
     Known,
+    /// This engineer is unlocked
     Unlocked,
+    /// Player has received an invite from this engineer
     Invited
 }
 
@@ -21,10 +24,15 @@ pub enum EngineerProgress {
 #[derive(Serialize_repr, Deserialize_repr, Debug, PartialEq, Clone)]
 #[repr(u8)]
 pub enum EngineerRank {
+    /// First
     One = 1,
+    /// Second
     Two = 2,
+    /// Third
     Three = 3,
+    /// Fourth
     Four = 4,
+    /// Final rank
     Five = 5,
 }
 
@@ -44,17 +52,26 @@ pub enum EngineerRank {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Engineer {
+    /// The engineers name
     pub engineer: String,
+    /// Internal id for the engineer
     #[serde(rename = "EngineerID")]
     pub engineer_id: u32,
+    /// Current progress with engineer
     pub progress: Option<EngineerProgress>,
+    /// Progress in current rank
     pub rank_progress: Option<u32>,
+    /// Rank with enginner
     pub rank: Option<EngineerRank>,
 }
 
+/// The Engineer Event can be either a single engineer or a list of engineers, we therefore, use
+/// this enum to allow those differences
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub enum EngineerData {
+    /// This event contains a single engineer
     Single(Engineer),
+    /// this event contains multiple engineers
     Multiple(Vec<Engineer>),
 }
 
