@@ -26,3 +26,4 @@ Cargo.lock
 
 # Folder to hold scratch pad file while developing that will not get commited
 /scratch
+/.idea/misc.xml

@@ -16,6 +16,8 @@ pub mod game;
 pub mod ship;
 /// Contains structs to represent music events
 pub mod music;
+/// For scan events
+pub mod scan;
 
 /// A common struct that is present in all events
 #[serde_as]
