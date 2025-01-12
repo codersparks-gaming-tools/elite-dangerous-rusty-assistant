@@ -7,15 +7,12 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added missing docs">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/process_scan_events.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan/common.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan/event.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan/helper.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/settlement.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixing some spelling mistakes">
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship/common.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship/fsd_target.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,6 +98,7 @@
     "Cargo.Test events::scan::event::tests::test_scan_star_event_all_fields_present.executor": "Run",
     "Cargo.Test events::scan::event::tests::test_scan_star_event_no_orbital_data.executor": "Run",
     "Cargo.Test events::scan::event::tests::test_scan_star_event_no_rings.executor": "Run",
+    "Cargo.Test events::ship::fsd_target::tests::test_fsd_target.executor": "Run",
     "Cargo.Test file_header::tests.executor": "Run",
     "Cargo.Test fss_signal_discovered::tests.executor": "Run",
     "Cargo.Test material::tests.executor": "Run",
@@ -139,8 +137,8 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12082122" />
-      <window_info id="Commit" order="1" weight="0.10010901" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11319041" />
+      <window_info id="Commit" order="1" weight="0.060864825" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -153,9 +151,9 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.29664856" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info active="true" anchor="bottom" id="Build" order="5" visible="true" weight="0.33016306" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.33016306" />
-      <window_info anchor="bottom" id="Find" order="7" visible="true" weight="0.33016306" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.33016306" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33016306" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Python Console" />
@@ -185,7 +183,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test event::tests">
+  <component name="RunManager" selected="Cargo.Test events::ship::fsd_target::tests::test_fsd_target">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -295,9 +293,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::scan::event::tests::test_scan_star_event_all_fields_present" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="buildProfileId" value="test" />
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::scan::event::tests::test_scan_star_event_all_fields_present -- --exact" />
+    <configuration name="Test events::scan::event::tests::test_scan_star_event_no_orbital_data" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::scan::event::tests::test_scan_star_event_no_orbital_data -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -313,8 +310,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::scan::event::tests::test_scan_star_event_no_orbital_data" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::scan::event::tests::test_scan_star_event_no_orbital_data -- --exact" />
+    <configuration name="Test events::ship::fsd_target::tests::test_fsd_target" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::ship::fsd_target::tests::test_fsd_target -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -353,19 +350,19 @@
       <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
       <item itemvalue="Cargo.List events - scratch" />
+      <item itemvalue="Cargo.Test events::ship::fsd_target::tests::test_fsd_target" />
       <item itemvalue="Cargo.Test event::tests" />
       <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_event_belt" />
       <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_event_planet_example_1" />
-      <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_star_event_all_fields_present" />
       <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_star_event_no_orbital_data" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test events::ship::fsd_target::tests::test_fsd_target" />
         <item itemvalue="Cargo.Test event::tests" />
         <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_event_belt" />
         <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_event_planet_example_1" />
         <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_star_event_no_orbital_data" />
-        <item itemvalue="Cargo.Test events::scan::event::tests::test_scan_star_event_all_fields_present" />
       </list>
     </recent_temporary>
   </component>
@@ -392,7 +389,8 @@
       <workItem from="1736525022618" duration="3012000" />
       <workItem from="1736528585873" duration="6763000" />
       <workItem from="1736536244027" duration="977000" />
-      <workItem from="1736590826896" duration="19985000" />
+      <workItem from="1736590826896" duration="20183000" />
+      <workItem from="1736683691721" duration="4351000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -450,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736523827630</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added scan event type">
+      <option name="closed" value="true" />
+      <created>1736613696686</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1736613696686</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixing some spelling mistakes">
+      <option name="closed" value="true" />
+      <created>1736683969159</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1736683969159</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +477,9 @@
     <MESSAGE value="more progress and fixing warnings" />
     <MESSAGE value="Implemented MusicEvent" />
     <MESSAGE value="Added missing docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added missing docs" />
+    <MESSAGE value="Added scan event type" />
+    <MESSAGE value="Fixing some spelling mistakes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing some spelling mistakes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
