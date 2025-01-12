@@ -20,7 +20,7 @@ pub struct FSDTargetEvent {
     pub star_class: String,
 
     /// Remaining jumps in the current route
-    pub remaining_jumps_in_route: u32,
+    pub remaining_jumps_in_route: Option<u32>,
 }
 
 #[cfg(test)]
@@ -41,6 +41,6 @@ mod tests {
         assert_eq!(event.name, "LF 8 +16 41");
         assert_eq!(event.system_address, 251012319587);
         assert_eq!(event.star_class, String::from("F"));
-        assert_eq!(event.remaining_jumps_in_route, 3);
+        assert_eq!(event.remaining_jumps_in_route, Some(3));
     }
 }

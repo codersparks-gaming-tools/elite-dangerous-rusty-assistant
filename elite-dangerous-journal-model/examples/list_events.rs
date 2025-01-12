@@ -2,9 +2,8 @@ use elite_dangerous_journal_model::events::fss_signal_discovered::FssSignalType;
 use elite_dangerous_journal_model::JournalEvent;
 use std::collections::HashSet;
 use std::fs::{metadata, File};
-use std::io;
 use std::io::{BufRead, BufReader};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use tracing::{debug, error, info, warn};
 
 fn main() {

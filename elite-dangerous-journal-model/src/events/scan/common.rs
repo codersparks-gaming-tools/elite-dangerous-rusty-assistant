@@ -9,7 +9,9 @@ pub enum ScanType {
     /// Detailed scan result
     Detailed,
     /// Cargo scan result
-    Cargo
+    Cargo,
+    /// Nav Beacon Detail scan result
+    NavBeaconDetail,
 }
 
 /// An enum to capture the reference of parents
