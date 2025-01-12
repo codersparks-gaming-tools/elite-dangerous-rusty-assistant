@@ -7,13 +7,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixing some spelling mistakes">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship/common.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship/fsd_target.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixing missing documentation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +134,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11319041" />
-      <window_info id="Commit" order="1" weight="0.060864825" />
+      <window_info id="Commit" order="1" weight="0.11319041" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -151,8 +147,8 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.29664856" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.33016306" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33016306" />
+      <window_info active="true" anchor="bottom" id="Build" order="5" visible="true" weight="0.33016306" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.33016306" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -390,7 +386,7 @@
       <workItem from="1736528585873" duration="6763000" />
       <workItem from="1736536244027" duration="977000" />
       <workItem from="1736590826896" duration="20183000" />
-      <workItem from="1736683691721" duration="4351000" />
+      <workItem from="1736683691721" duration="7502000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -464,7 +460,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736683969159</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added FSDTarget and some slight re-organisation">
+      <option name="closed" value="true" />
+      <created>1736688059277</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1736688059277</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixing missing documentation">
+      <option name="closed" value="true" />
+      <created>1736688299777</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736688299777</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,7 +491,9 @@
     <MESSAGE value="Added missing docs" />
     <MESSAGE value="Added scan event type" />
     <MESSAGE value="Fixing some spelling mistakes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing some spelling mistakes" />
+    <MESSAGE value="Added FSDTarget and some slight re-organisation" />
+    <MESSAGE value="Fixing missing documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing missing documentation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
