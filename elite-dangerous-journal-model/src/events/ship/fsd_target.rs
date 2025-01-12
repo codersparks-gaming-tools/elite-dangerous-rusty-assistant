@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 use crate::events::EventMeta;
 
+/// An event that show the target of a FSD Jump
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct FSDTargetEvent {
