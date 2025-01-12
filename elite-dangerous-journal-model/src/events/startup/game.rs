@@ -1,8 +1,8 @@
 
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use crate::events::EventMeta;
-use crate::events::ship::common::ShipMeta;
+use crate::events::common::EventMeta;
+use crate::events::common::ShipMeta;
 
 /// A struct to provide game meta data
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
@@ -137,7 +137,7 @@ pub struct FileHeaderEvent {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::game::{FileHeaderEvent, GameMode, LoadGameEvent};
+    use crate::events::startup::game::{FileHeaderEvent, GameMode, LoadGameEvent};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]

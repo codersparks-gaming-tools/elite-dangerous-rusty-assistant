@@ -1,4 +1,4 @@
-use elite_dangerous_journal_model::events::fss_signal_discovered::FssSignalType;
+use elite_dangerous_journal_model::events::exploration::fss_signal_discovered::FssSignalType;
 use elite_dangerous_journal_model::JournalEvent;
 use std::collections::HashSet;
 use std::fs::{metadata, File};

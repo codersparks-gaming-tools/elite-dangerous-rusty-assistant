@@ -9,14 +9,15 @@ pub mod events;
 mod test_helper;
 
 use serde::{Deserialize, Serialize};
-use crate::events::commander::{CommanderEvent, CommanderProgressEvent, CommanderRankEvent, CommanderReputationEvent};
-use crate::events::engineer::EngineerProgressEvent;
-use crate::events::fss_signal_discovered::FSSSignalDiscoveredEvent;
-use crate::events::game::{FileHeaderEvent, LoadGameEvent};
-use crate::events::material::MaterialsEvent;
-use crate::events::music::MusicEvent;
-use crate::events::scan::event::ScanEvent;
-use crate::events::ship::fsd_target::FSDTargetEvent;
+use events::startup::commander::{CommanderEvent, CommanderProgressEvent, CommanderRankEvent, CommanderReputationEvent};
+use events::station_services::engineer::EngineerProgressEvent;
+use events::exploration::fss_signal_discovered::FSSSignalDiscoveredEvent;
+use events::startup::game::{FileHeaderEvent, LoadGameEvent};
+use events::startup::material::MaterialsEvent;
+use events::other::music::MusicEvent;
+use events::exploration::scan::event::ScanEvent;
+use events::travel::fsd_target::FSDTargetEvent;
+use crate::events::odyssey::ship_locker::ShipLockerEvent;
 
 /// The journal event enum allows the deserialisation of the events from the elite dangerous journal log
 /// It uses the ```event``` json field to determine what enum variant to load and then completes the data
@@ -53,6 +54,8 @@ pub enum JournalEvent {
     NavRouteClear,
     /// FSDTarget event
     FSDTarget(FSDTargetEvent),
+    /// ShipLocker event
+    ShipLocker(ShipLockerEvent),
     /// This is a catch all for any other event in the file to allow iterative development and also should frontier add an event in the future
     #[serde(other)]
     Unknown,

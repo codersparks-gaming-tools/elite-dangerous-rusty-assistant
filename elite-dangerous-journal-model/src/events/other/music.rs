@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::events::EventMeta;
+use crate::events::common::EventMeta;
 
 /// What this music event is for
 #[derive(Debug,Serialize, Deserialize, Clone, PartialEq)]
@@ -57,7 +57,7 @@ pub struct MusicEvent {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::music::{Music, MusicEvent};
+    use crate::events::other::music::{Music, MusicEvent};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]

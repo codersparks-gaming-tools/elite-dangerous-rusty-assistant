@@ -1,7 +1,7 @@
 
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use crate::events::EventMeta;
+use crate::events::common::EventMeta;
 
 /// The materials event give the current materials that the commander has in their inventory
 ///
@@ -96,7 +96,7 @@ pub struct LocalisedMaterial {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::material::{LocalisedMaterial, MaterialsEvent, RawMaterial};
+    use crate::events::startup::material::{LocalisedMaterial, MaterialsEvent, RawMaterial};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]

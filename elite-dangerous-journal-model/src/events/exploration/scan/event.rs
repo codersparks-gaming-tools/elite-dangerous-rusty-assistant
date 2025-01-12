@@ -1,8 +1,8 @@
-use crate::events::scan::common::{
+use crate::events::exploration::scan::common::{
     AtmosphereType, Composition, CompositionPercentage, ParentType, Ring, ScanType,
 };
-use crate::events::scan::helper::ScanEventHelper;
-use crate::events::EventMeta;
+use crate::events::exploration::scan::helper::ScanEventHelper;
+use crate::events::common::EventMeta;
 use serde::{Deserialize, Deserializer, Serialize};
 use tracing::{debug, trace};
 
@@ -370,8 +370,8 @@ impl OrbitalMechanicsData {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::scan::common::{AtmosphereType, Composition, CompositionPercentage, ParentType, Ring, ScanType};
-    use crate::events::scan::event::{OrbitalMechanicsData, ScanData, ScanEvent};
+    use crate::events::exploration::scan::common::{AtmosphereType, Composition, CompositionPercentage, ParentType, Ring, ScanType};
+    use crate::events::exploration::scan::event::{OrbitalMechanicsData, ScanData, ScanEvent};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]

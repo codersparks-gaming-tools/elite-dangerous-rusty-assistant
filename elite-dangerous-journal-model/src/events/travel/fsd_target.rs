@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::events::EventMeta;
+use crate::events::common::EventMeta;
 
 /// An event that show the target of a FSD Jump
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -25,7 +25,7 @@ pub struct FSDTargetEvent {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::ship::fsd_target::FSDTargetEvent;
+    use crate::events::travel::fsd_target::FSDTargetEvent;
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]

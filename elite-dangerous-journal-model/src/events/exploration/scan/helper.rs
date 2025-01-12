@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-use crate::events::EventMeta;
-use crate::events::scan::common::{AtmosphereType, Composition, CompositionPercentage, ParentType, Ring, ScanType};
+use crate::events::common::EventMeta;
+use crate::events::exploration::scan::common::{AtmosphereType, Composition, CompositionPercentage, ParentType, Ring, ScanType};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all="PascalCase")]

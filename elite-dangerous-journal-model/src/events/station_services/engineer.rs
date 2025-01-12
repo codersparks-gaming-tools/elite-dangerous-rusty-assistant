@@ -3,8 +3,8 @@ use serde::{Deserialize, Deserializer, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 use serde_with::serde_as;
 use tracing::debug;
-use crate::events::engineer::EngineerData::{Multiple, Single};
-use crate::events::EventMeta;
+use crate::events::station_services::engineer::EngineerData::{Multiple, Single};
+use crate::events::common::EventMeta;
 
 /// The current state of the relation ship of the commander with this engineer
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -179,7 +179,7 @@ impl<'de> Deserialize<'de> for EngineerProgressEvent {
 #[cfg(test)]
 mod tests {
     use chrono::NaiveDateTime;
-    use crate::events::engineer::{Engineer, EngineerProgressEvent, EngineerProgress, EngineerRank, EngineerData};
+    use crate::events::station_services::engineer::{Engineer, EngineerProgressEvent, EngineerProgress, EngineerRank, EngineerData};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]

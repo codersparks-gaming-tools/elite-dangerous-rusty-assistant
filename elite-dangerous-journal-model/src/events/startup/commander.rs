@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use crate::events::{EventMeta};
+use crate::events::common::EventMeta;
 
 /// Struct to represent the commander details, used in multiple events
 #[derive(Debug, Deserialize, Serialize, Clone, PartialEq)]
@@ -163,7 +163,7 @@ pub struct CommanderRankEvent {
 #[cfg(test)]
 mod tests {
     use crate::test_helper::serde_helpers::create_timestamp;
-    use crate::events::commander::{CommanderEvent, CommanderProgressEvent, CommanderRankEvent, CommanderReputationEvent};
+    use crate::events::startup::commander::{CommanderEvent, CommanderProgressEvent, CommanderRankEvent, CommanderReputationEvent};
     #[test]
     fn test_deserialize_progress_event() {
         let timestamp_str = "2025-01-04T19:27:09Z";

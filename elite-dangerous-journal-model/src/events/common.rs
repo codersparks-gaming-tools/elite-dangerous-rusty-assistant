@@ -1,6 +1,19 @@
+use serde_with::serde_as;
 use serde::{Deserialize, Serialize};
+use chrono::NaiveDateTime;
 
-/// Meta data about the ship
+/// A common struct that is present in all events
+#[serde_as]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+pub struct EventMeta {
+    /// Timestamp the event was received
+    #[serde_as(as="chrono::DateTime<chrono::Utc>")]
+    #[serde(rename = "timestamp")]
+    pub timestamp: NaiveDateTime,
+}
+
+
+/// Meta data about a ship
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct ShipMeta {
@@ -14,3 +27,4 @@ pub struct ShipMeta {
     /// The in-game identity (e.g. "NCC-1701")
     pub ship_ident: String
 }
+

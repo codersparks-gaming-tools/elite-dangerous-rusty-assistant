@@ -1,7 +1,7 @@
 
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use crate::events::EventMeta;
+use crate::events::common::EventMeta;
 
 /// Enum to represent the signal type
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -80,7 +80,7 @@ pub struct FSSSignalDiscoveredEvent {
 
 #[cfg(test)]
 mod tests {
-    use crate::events::fss_signal_discovered::{FSSSignalDiscoveredEvent, FssSignalType};
+    use crate::events::exploration::fss_signal_discovered::{FSSSignalDiscoveredEvent, FssSignalType};
     use crate::test_helper::serde_helpers::create_timestamp;
 
     #[test]
