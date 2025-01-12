@@ -95,7 +95,7 @@ pub struct Star {
 
     /// The star type
     pub star_type: String,
-    /// The sub class of the star
+    /// The subclass of the star
     pub sub_class: u32,
     /// The stellar mass of the star
     pub stellar_mass: f32,
@@ -246,7 +246,7 @@ impl PlanetMoon {
             radius: helper.radius.unwrap(),
             landable: helper.landable.unwrap(),
             axial_tilt: helper.axial_tilt.unwrap(),
-            // We know for a planet the orgbital data must be present
+            // We know for a planet the orbital data must be present
             orbital_mechanics_data: OrbitalMechanicsData::from_helper(helper).unwrap(),
             atmosphere_type: helper.atmosphere_type.clone(),
             composition: helper.composition.clone(),
@@ -281,7 +281,7 @@ impl BeltCluster {
     }
 }
 
-/// Body data shared for diffent event types
+/// Body data shared for different event types
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Body {
@@ -298,7 +298,7 @@ pub struct Body {
     /// The system address
     pub system_address: u64,
 
-    /// Distance from the arival point
+    /// Distance from the arrival point
     #[serde(rename = "DistanceFromArrivalLS")]
     pub distance_from_arrival_ls: f32,
 
@@ -343,13 +343,13 @@ pub struct OrbitalMechanicsData {
     pub orbital_period: f32,
     /// The ascending node
     pub ascending_node: f32,
-    /// The mean anomoly of the orbit
+    /// The mean anomaly of the orbit
     pub mean_anomaly: f32,
 }
 
 impl OrbitalMechanicsData {
 
-    /// Creates a orbital mechanics data from the helper interim struct
+    /// Creates an orbital mechanics data from the helper interim struct
     pub(crate) fn from_helper(helper: &ScanEventHelper) -> Option<Self>{
         // We're going to assume that if one field is present all are present
         if helper.semi_major_axis.is_some() {
