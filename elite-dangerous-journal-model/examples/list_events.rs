@@ -79,6 +79,7 @@ fn process_path(unknown_count: &mut i32, unknown_signal_types: &mut HashSet<Stri
                                 JournalEvent::Unknown => {
                                     *unknown_count += 1;
                                     warn!("Unknown event {}", event_num + 1);
+                                    warn!("\t\t=>{:?}", line);
                                 }
                                 JournalEvent::FSSSignalDiscovered(event) => match event.signal_type {
                                     FssSignalType::Unknown(signal_type) => {

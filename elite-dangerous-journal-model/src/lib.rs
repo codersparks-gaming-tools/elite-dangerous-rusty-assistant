@@ -17,7 +17,10 @@ use events::startup::material::MaterialsEvent;
 use events::other::music::MusicEvent;
 use events::exploration::scan::event::ScanEvent;
 use events::travel::fsd_target::FSDTargetEvent;
+use crate::events::common::EmptyEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
+use crate::events::other::fuel_scoop::FuelScoopEvent;
+use crate::events::other::receive_text::ReceiveTextEvent;
 
 /// The journal event enum allows the deserialisation of the events from the elite dangerous journal log
 /// It uses the ```event``` json field to determine what enum variant to load and then completes the data
@@ -49,13 +52,20 @@ pub enum JournalEvent {
     /// Scan event
     Scan(ScanEvent),
     /// NavRoute event - This is an empty event
-    NavRoute,
+    NavRoute(EmptyEvent),
     /// NavRouteClear event - This is an empty event
-    NavRouteClear,
+    NavRouteClear(EmptyEvent),
     /// FSDTarget event
     FSDTarget(FSDTargetEvent),
     /// ShipLocker event
     ShipLocker(ShipLockerEvent),
+    /// Fuel Scoop event
+    FuelScoop(FuelScoopEvent),
+    /// Receive text event
+    ReceiveText(ReceiveTextEvent),
+    /// Game shutdown event
+    #[serde(rename= "Shutdown")]
+    ShutDown(EmptyEvent),
     /// This is a catch all for any other event in the file to allow iterative development and also should frontier add an event in the future
     #[serde(other)]
     Unknown,

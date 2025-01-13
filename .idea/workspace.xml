@@ -8,37 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixed a couple of errors/assumptions after improving error reporting">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/combat.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/fleet_carriers.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/odyssey.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/odyssey/common.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/odyssey/ship_locker.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/powerplay.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/squadrons.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/status.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/trade.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/fuel_scoop.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/receive_text.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/commander.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup/commander.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/engineer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/engineer.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/fss_signal_discovered.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/fss_signal_discovered.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup/game.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup/material.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/music.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/music.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/scan.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/scan/common.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan/event.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/scan/event.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/scan/helper.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/scan/helper.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship/common.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/ship/fsd_target.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_target.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="journal_watcher" />
+        <entry key="$PROJECT_DIR$" value="journal_watcher_update_from_read_the_docs" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -121,6 +96,8 @@
     "Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_no_fields.executor": "Run",
     "Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields.executor": "Run",
     "Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_items.executor": "Run",
+    "Cargo.Test events::other::fuel_scoop::tests::test_fuel_scoop_event.executor": "Run",
+    "Cargo.Test events::other::receive_text::tests::test_receive_text_event.executor": "Run",
     "Cargo.Test events::rank::tests::test_deserialize_rank_event.executor": "Run",
     "Cargo.Test events::scan::event::tests::test_scan_event_belt.executor": "Run",
     "Cargo.Test events::scan::event::tests::test_scan_event_planet_example_1.executor": "Run",
@@ -130,6 +107,7 @@
     "Cargo.Test events::ship::fsd_target::tests::test_fsd_target.executor": "Run",
     "Cargo.Test file_header::tests.executor": "Run",
     "Cargo.Test fss_signal_discovered::tests.executor": "Run",
+    "Cargo.Test fuel_scoop::tests.executor": "Run",
     "Cargo.Test material::tests.executor": "Run",
     "Cargo.Test music::tests.executor": "Run",
     "Cargo.Test progress::tests.executor": "Run",
@@ -142,7 +120,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
     "git-widget-placeholder": "journal__watcher",
-    "last_opened_file_path": "/home/sparks/dev/elite/elite-dangerous-rusty-assistant/elite-dangerous-journal-model/src/events/odyssey",
+    "last_opened_file_path": "/home/sparks/dev/elite/elite-dangerous-rusty-assistant/scratch",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -167,8 +145,8 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11319041" />
-      <window_info id="Commit" order="1" weight="0.11319041" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.109920055" />
+      <window_info id="Commit" order="1" weight="0.109920055" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -181,8 +159,8 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.33016306" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.33016306" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33016306" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.29664856" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.29664856" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -198,10 +176,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scratch" />
       <recent name="$PROJECT_DIR$/scratch/Elite Dangerous - Journal" />
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events" />
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/examples" />
-      <recent name="$PROJECT_DIR$/scratch" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration" />
@@ -216,7 +194,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test ship_locker::tests">
+  <component name="RunManager" selected="Cargo.Test events::other::receive_text::tests::test_receive_text_event">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -275,23 +253,6 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::odyssey::ship_locker::tests::test_ship_locker_event_no_fields" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::odyssey::ship_locker::tests::test_ship_locker_event_no_fields -- --exact" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package elite-dangerous-journal-model --lib events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -309,8 +270,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_items" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::odyssey::ship_locker::tests::test_ship_locker_event_with_items -- --exact" />
+    <configuration name="Test events::other::fuel_scoop::tests::test_fuel_scoop_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::fuel_scoop::tests::test_fuel_scoop_event -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -326,8 +287,25 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::ship::fsd_target::tests::test_fsd_target" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::ship::fsd_target::tests::test_fsd_target -- --exact" />
+    <configuration name="Test events::other::receive_text::tests::test_receive_text_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::receive_text::tests::test_receive_text_event -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test fuel_scoop::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::fuel_scoop::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -383,19 +361,19 @@
       <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
       <item itemvalue="Cargo.List events - scratch" />
-      <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_no_fields" />
+      <item itemvalue="Cargo.Test events::other::fuel_scoop::tests::test_fuel_scoop_event" />
+      <item itemvalue="Cargo.Test events::other::receive_text::tests::test_receive_text_event" />
+      <item itemvalue="Cargo.Test fuel_scoop::tests" />
       <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields" />
-      <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_items" />
-      <item itemvalue="Cargo.Test events::ship::fsd_target::tests::test_fsd_target" />
       <item itemvalue="Cargo.Test ship_locker::tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test events::other::receive_text::tests::test_receive_text_event" />
+        <item itemvalue="Cargo.Test events::other::fuel_scoop::tests::test_fuel_scoop_event" />
+        <item itemvalue="Cargo.Test fuel_scoop::tests" />
         <item itemvalue="Cargo.Test ship_locker::tests" />
         <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields" />
-        <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_items" />
-        <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_no_fields" />
-        <item itemvalue="Cargo.Test events::ship::fsd_target::tests::test_fsd_target" />
       </list>
     </recent_temporary>
   </component>
