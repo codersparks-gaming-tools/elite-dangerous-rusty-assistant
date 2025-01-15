@@ -7,14 +7,18 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixed a couple of errors/assumptions after improving error reporting">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/fuel_scoop.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/receive_text.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added an EmptyEvent type to allow access to the timestamp for an empty event (e.g. NavRoute and ShutDown events)&#10;&#10;Added fuel_scoop and receive_test evnts">
+      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data-build-support/src/build.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data-build-support/src/types.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data-build-support/src/types/faction.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data/build.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data/data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-static-data/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="journal_watcher_update_from_read_the_docs" />
+        <entry key="$PROJECT_DIR$" value="journal_watcher" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,12 +71,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Cargo.Build `Test build::tests (1)`.executor": "Run",
+    "Cargo.Build `Test build::tests::test_generate_faction_state_enum`.executor": "Run",
     "Cargo.Build `Test events::engineer::tests::test_deserialize_single_engineer_known`.executor": "Run",
     "Cargo.Build `Test events::scan::event::tests::test_scan_star_event_all_fields_present`.executor": "Run",
     "Cargo.Build `Test file_header::tests`.executor": "Run",
+    "Cargo.Build `Test tests::test_generate_faction_state_enum`.executor": "Run",
     "Cargo.List events - scratch.executor": "Run",
     "Cargo.List events.executor": "Run",
     "Cargo.Run list_events.executor": "Run",
+    "Cargo.Test build::tests (1).executor": "Run",
+    "Cargo.Test build::tests.executor": "Run",
+    "Cargo.Test build::tests::test_generate_faction_state_enum.executor": "Run",
     "Cargo.Test commander::tests.executor": "Run",
     "Cargo.Test engineer::tests.executor": "Run",
     "Cargo.Test event::tests.executor": "Run",
@@ -105,6 +115,7 @@
     "Cargo.Test events::scan::event::tests::test_scan_star_event_no_orbital_data.executor": "Run",
     "Cargo.Test events::scan::event::tests::test_scan_star_event_no_rings.executor": "Run",
     "Cargo.Test events::ship::fsd_target::tests::test_fsd_target.executor": "Run",
+    "Cargo.Test faction::tests::test_parse_faction_state.executor": "Run",
     "Cargo.Test file_header::tests.executor": "Run",
     "Cargo.Test fss_signal_discovered::tests.executor": "Run",
     "Cargo.Test fuel_scoop::tests.executor": "Run",
@@ -114,12 +125,13 @@
     "Cargo.Test rank::tests.executor": "Run",
     "Cargo.Test reputation::tests.executor": "Run",
     "Cargo.Test ship_locker::tests.executor": "Run",
+    "Cargo.Test tests::test_generate_faction_state_enum.executor": "Run",
     "Cargo.Test.executor": "Run",
     "Cargo.clean.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "journal__watcher",
+    "git-widget-placeholder": "code__gen__static__data",
     "last_opened_file_path": "/home/sparks/dev/elite/elite-dangerous-rusty-assistant/scratch",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -145,8 +157,8 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.109920055" />
-      <window_info id="Commit" order="1" weight="0.109920055" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12699854" />
+      <window_info id="Commit" order="1" weight="0.10592297" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -159,8 +171,8 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.33016306" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.29664856" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.29664856" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.33016306" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.33016306" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -182,11 +194,11 @@
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/examples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/elite-dangerous-static-data-build-support/src/types" />
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration" />
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/odyssey" />
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel" />
       <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -194,7 +206,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test events::other::receive_text::tests::test_receive_text_event">
+  <component name="RunManager" selected="Cargo.Test build::tests::test_generate_faction_state_enum">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -253,8 +265,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields -- --exact" />
+    <configuration name="Test build::tests (1)" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-static-data-types --lib build::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -270,8 +282,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::other::fuel_scoop::tests::test_fuel_scoop_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::fuel_scoop::tests::test_fuel_scoop_event -- --exact" />
+    <configuration name="Test build::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-static-data tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -287,8 +299,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::other::receive_text::tests::test_receive_text_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::receive_text::tests::test_receive_text_event -- --exact" />
+    <configuration name="Test build::tests::test_generate_faction_state_enum" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-static-data-types --lib build::tests::test_generate_faction_state_enum -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -304,8 +316,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test fuel_scoop::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::fuel_scoop::tests" />
+    <configuration name="Test faction::tests::test_parse_faction_state" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-static-data-types --lib faction::tests::test_parse_faction_state -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -321,8 +333,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test ship_locker::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::odyssey::ship_locker::tests" />
+    <configuration name="Test tests::test_generate_faction_state_enum" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-static-data tests::test_generate_faction_state_enum -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -361,19 +373,19 @@
       <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
       <item itemvalue="Cargo.List events - scratch" />
-      <item itemvalue="Cargo.Test events::other::fuel_scoop::tests::test_fuel_scoop_event" />
-      <item itemvalue="Cargo.Test events::other::receive_text::tests::test_receive_text_event" />
-      <item itemvalue="Cargo.Test fuel_scoop::tests" />
-      <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields" />
-      <item itemvalue="Cargo.Test ship_locker::tests" />
+      <item itemvalue="Cargo.Test build::tests" />
+      <item itemvalue="Cargo.Test build::tests (1)" />
+      <item itemvalue="Cargo.Test build::tests::test_generate_faction_state_enum" />
+      <item itemvalue="Cargo.Test tests::test_generate_faction_state_enum" />
+      <item itemvalue="Cargo.Test faction::tests::test_parse_faction_state" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cargo.Test events::other::receive_text::tests::test_receive_text_event" />
-        <item itemvalue="Cargo.Test events::other::fuel_scoop::tests::test_fuel_scoop_event" />
-        <item itemvalue="Cargo.Test fuel_scoop::tests" />
-        <item itemvalue="Cargo.Test ship_locker::tests" />
-        <item itemvalue="Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields" />
+        <item itemvalue="Cargo.Test build::tests::test_generate_faction_state_enum" />
+        <item itemvalue="Cargo.Test build::tests (1)" />
+        <item itemvalue="Cargo.Test build::tests" />
+        <item itemvalue="Cargo.Test tests::test_generate_faction_state_enum" />
+        <item itemvalue="Cargo.Test faction::tests::test_parse_faction_state" />
       </list>
     </recent_temporary>
   </component>
@@ -402,6 +414,8 @@
       <workItem from="1736536244027" duration="977000" />
       <workItem from="1736590826896" duration="20183000" />
       <workItem from="1736683691721" duration="14345000" />
+      <workItem from="1736870058286" duration="7218000" />
+      <workItem from="1736957877578" duration="5085000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -507,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736692155642</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added an EmptyEvent type to allow access to the timestamp for an empty event (e.g. NavRoute and ShutDown events)&#10;&#10;Added fuel_scoop and receive_test evnts">
+      <option name="closed" value="true" />
+      <created>1736791169839</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736791169839</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +548,8 @@
     <MESSAGE value="Fixing missing documentation" />
     <MESSAGE value="Updated list_Events to have more useful error docs" />
     <MESSAGE value="Fixed a couple of errors/assumptions after improving error reporting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a couple of errors/assumptions after improving error reporting" />
+    <MESSAGE value="Added an EmptyEvent type to allow access to the timestamp for an empty event (e.g. NavRoute and ShutDown events)&#10;&#10;Added fuel_scoop and receive_test evnts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added an EmptyEvent type to allow access to the timestamp for an empty event (e.g. NavRoute and ShutDown events)&#10;&#10;Added fuel_scoop and receive_test evnts" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

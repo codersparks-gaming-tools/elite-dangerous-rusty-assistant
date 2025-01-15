@@ -1,0 +1,3 @@
+[submodule "elite-dangerous-static-data/data"]
+	path = elite-dangerous-static-data/data
+	url = git@github.com:codersparks-gaming-tools/elite-dangerous-ids.git
