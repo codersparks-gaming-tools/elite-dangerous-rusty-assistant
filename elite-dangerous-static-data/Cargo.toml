@@ -1,0 +1,10 @@
+[package]
+name = "elite-dangerous-static-data"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+elite-dangerous-static-data-types = { path = "../elite-dangerous-static-data-build-support" }
+csv = "1"
+serde = { version = "1", features = ["derive"] }
+convert_case = "0.7.1"
