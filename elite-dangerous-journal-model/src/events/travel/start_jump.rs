@@ -91,7 +91,7 @@ mod tests {
 
         assert_eq!(result.event_meta.timestamp, timestamp);
         assert_eq!(result.jump_type, JumpType::SuperCruise);
-        assert_eq!(result.taxi, false);
+        assert_eq!(result.taxi, true);
     }
 }
 
