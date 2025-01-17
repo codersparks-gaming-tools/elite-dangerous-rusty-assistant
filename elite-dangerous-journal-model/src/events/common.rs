@@ -1,3 +1,7 @@
+
+/// Common system structs
+pub mod system;
+
 use serde_with::serde_as;
 use serde::{Deserialize, Serialize};
 use chrono::NaiveDateTime;

@@ -9,6 +9,7 @@ serde = { version = "1", features = ["derive"] }
 chrono = "0.4"
 serde_with = {  version = "3", features = ["chrono"] }
 serde_repr = "0.1"
+serde_tuple = "1"
 
 [dev-dependencies]
 serde_json = "1"

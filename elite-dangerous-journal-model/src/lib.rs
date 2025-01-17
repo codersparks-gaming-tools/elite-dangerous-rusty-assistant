@@ -21,6 +21,7 @@ use crate::events::common::EmptyEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
 use crate::events::other::receive_text::ReceiveTextEvent;
+use crate::events::travel::fsd_jump::fsd_jump_event::FSDJumpEvent;
 use crate::events::travel::start_jump::StartJumpEvent;
 
 /// The journal event enum allows the deserialisation of the events from the elite dangerous journal log
@@ -29,43 +30,46 @@ use crate::events::travel::start_jump::StartJumpEvent;
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "event")]
 pub enum JournalEvent {
+    /// Commander event
+    Commander(CommanderEvent),
+    /// Engineer event
+    EngineerProgress(EngineerProgressEvent),
     /// Fileheader event
     #[serde(rename = "Fileheader")]
     FileHeader(FileHeaderEvent),
-    /// Commander event
-    Commander(CommanderEvent),
-    /// Materials event
-    Materials(MaterialsEvent),
-    /// Commander Rank event
-    Rank(CommanderRankEvent),
-    /// Progress Rank event
-    Progress(CommanderProgressEvent),
-    /// Reputation event,
-    Reputation(CommanderReputationEvent),
+    /// FSDJump event
+    FSDJump(FSDJumpEvent),
+    /// FSDTarget event
+    FSDTarget(FSDTargetEvent),
     /// FSS Signal Discovered event
     FSSSignalDiscovered(FSSSignalDiscoveredEvent),
+    /// Fuel Scoop event
+    FuelScoop(FuelScoopEvent),
     /// Game Load event
     LoadGame(LoadGameEvent),
-    /// Engineer event
-    EngineerProgress(EngineerProgressEvent),
+    /// Materials event
+    Materials(MaterialsEvent),
     /// Music event
     Music(MusicEvent),
-    /// Scan event
-    Scan(ScanEvent),
     /// NavRoute event - This is an empty event
     NavRoute(EmptyEvent),
     /// NavRouteClear event - This is an empty event
     NavRouteClear(EmptyEvent),
-    /// FSDTarget event
-    FSDTarget(FSDTargetEvent),
-    /// ShipLocker event
-    ShipLocker(ShipLockerEvent),
-    /// Fuel Scoop event
-    FuelScoop(FuelScoopEvent),
+    /// Progress Rank event
+    Progress(CommanderProgressEvent),
+    /// Commander Rank event
+    Rank(CommanderRankEvent),
     /// Receive text event
     ReceiveText(ReceiveTextEvent),
+    /// Reputation event,
+    Reputation(CommanderReputationEvent),
+    /// Scan event
+    Scan(ScanEvent),
+    /// ShipLocker event
+    ShipLocker(ShipLockerEvent),
     /// StartJump event
     StartJump(StartJumpEvent),
+
     /// Game shutdown event
     #[serde(rename= "Shutdown")]
     ShutDown(EmptyEvent),
