@@ -28,7 +28,6 @@ pub struct ShipMeta {
     pub ship_ident: String
 }
 
-
 /// A representation for an empty event that just contains the evnnt meta
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]

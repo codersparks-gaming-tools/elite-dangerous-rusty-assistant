@@ -21,6 +21,7 @@ use crate::events::common::EmptyEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
 use crate::events::other::receive_text::ReceiveTextEvent;
+use crate::events::travel::start_jump::StartJumpEvent;
 
 /// The journal event enum allows the deserialisation of the events from the elite dangerous journal log
 /// It uses the ```event``` json field to determine what enum variant to load and then completes the data
@@ -63,6 +64,8 @@ pub enum JournalEvent {
     FuelScoop(FuelScoopEvent),
     /// Receive text event
     ReceiveText(ReceiveTextEvent),
+    /// StartJump event
+    StartJump(StartJumpEvent),
     /// Game shutdown event
     #[serde(rename= "Shutdown")]
     ShutDown(EmptyEvent),
