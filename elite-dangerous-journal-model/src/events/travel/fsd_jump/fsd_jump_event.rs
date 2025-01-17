@@ -68,3 +68,55 @@ pub struct FSDJumpEvent {
     pub multi_crew: bool,
 
 }
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json;
+    use crate::test_helper::serde_helpers::create_timestamp;
+
+    #[test]
+    fn test_serialize_deserialize_fsd_jump_event() {
+        let event_meta = EventMeta {
+            timestamp: create_timestamp("2023-11-05T12:00:00Z"),
+        };
+
+        let star_pos = StarPosition {
+            x: 123.45,
+            y: 678.90,
+            z: -12.34,
+        };
+
+        let fsd_jump_event = FSDJumpEvent {
+            event_meta,
+            star_system: "Sol".to_string(),
+            system_address: 1234567890123456789,
+            star_pos,
+            system_economy: "Agriculture".to_string(),
+            system_economy_localised: "Agricultural".to_string(),
+            system_second_economy: "Industrial".to_string(),
+            system_second_ecomomy_localised: "Industrialised".to_string(),
+            system_government: "Democracy".to_string(),
+            system_government_localised: "Democratic".to_string(),
+            system_security: "High".to_string(),
+            system_security_localised: "Secure".to_string(),
+            population: 7000000000,
+            jump_dist: 12.34,
+            fuel_used: 1.5,
+            fuel_level: 15.0,
+            taxi: false,
+            multi_crew: true,
+        };
+
+        // Serialize the event to JSON
+        let serialized = serde_json::to_string(&fsd_jump_event).expect("Failed to serialize FSDJumpEvent");
+
+        // Deserialize the JSON back into an FSDJumpEvent
+        let deserialized: FSDJumpEvent =
+            serde_json::from_str(&serialized).expect("Failed to deserialize FSDJumpEvent");
+
+        // Assert that the deserialized struct matches the original
+        assert_eq!(fsd_jump_event, deserialized);
+    }
+}

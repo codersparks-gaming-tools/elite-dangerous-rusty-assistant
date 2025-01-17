@@ -7,16 +7,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added start_jump event">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common/system.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/fsd_jump_event.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/star_position.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added fsd jump event">
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/fsd_jump_event.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/fsd_jump_event.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/star_position.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/star_position.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +67,7 @@
     "Cargo.Build `Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization`.executor": "Run",
     "Cargo.Build `Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace`.executor": "Run",
     "Cargo.Build `Test file_header::tests`.executor": "Run",
+    "Cargo.Build `Test fsd_jump_event::tests`.executor": "Run",
     "Cargo.List events - scratch.executor": "Run",
     "Cargo.List events.executor": "Run",
     "Cargo.Run list_events.executor": "Run",
@@ -114,6 +108,7 @@
     "Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace.executor": "Run",
     "Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise.executor": "Run",
     "Cargo.Test file_header::tests.executor": "Run",
+    "Cargo.Test fsd_jump_event::tests.executor": "Run",
     "Cargo.Test fss_signal_discovered::tests.executor": "Run",
     "Cargo.Test fuel_scoop::tests.executor": "Run",
     "Cargo.Test material::tests.executor": "Run",
@@ -154,8 +149,8 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13971657" />
-      <window_info id="Commit" order="1" weight="0.13971657" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.13971657" />
+      <window_info active="true" id="Commit" order="1" visible="true" weight="0.13971657" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
@@ -204,7 +199,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test star_position::tests">
+  <component name="RunManager" selected="Cargo.Test fsd_jump_event::tests">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -297,8 +292,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace -- --exact" />
+    <configuration name="Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -314,8 +309,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise -- --exact" />
+    <configuration name="Test fsd_jump_event::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::fsd_jump::fsd_jump_event::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -373,17 +368,17 @@
       <item itemvalue="Cargo.List events - scratch" />
       <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization" />
       <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization" />
-      <item itemvalue="Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace" />
       <item itemvalue="Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" />
+      <item itemvalue="Cargo.Test fsd_jump_event::tests" />
       <item itemvalue="Cargo.Test star_position::tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test fsd_jump_event::tests" />
         <item itemvalue="Cargo.Test star_position::tests" />
         <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization" />
         <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization" />
         <item itemvalue="Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" />
-        <item itemvalue="Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace" />
       </list>
     </recent_temporary>
   </component>
@@ -412,7 +407,7 @@
       <workItem from="1736536244027" duration="977000" />
       <workItem from="1736590826896" duration="20183000" />
       <workItem from="1736683691721" duration="14345000" />
-      <workItem from="1737126454021" duration="7248000" />
+      <workItem from="1737126454021" duration="7609000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -526,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737129301285</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added fsd jump event">
+      <option name="closed" value="true" />
+      <created>1737134646839</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1737134646839</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +549,8 @@
     <MESSAGE value="Updated list_Events to have more useful error docs" />
     <MESSAGE value="Fixed a couple of errors/assumptions after improving error reporting" />
     <MESSAGE value="Added start_jump event" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added start_jump event" />
+    <MESSAGE value="Added fsd jump event" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added fsd jump event" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
