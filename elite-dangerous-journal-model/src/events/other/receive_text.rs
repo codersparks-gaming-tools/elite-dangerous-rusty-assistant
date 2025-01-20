@@ -1,7 +1,41 @@
 use serde::{Deserialize, Serialize};
-use crate::events::common::EventMeta;
+use crate::events::common::{EventMeta, LocalisedValue};
 
 /// Data for a recieve text event
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(from = "ReceiveTextEventSchema", into = "ReceiveTextEventSchema")]
+pub struct ReceiveTextEvent {
+    /// The event meta data
+    pub event_meta: EventMeta,
+    /// The sender of the message
+    pub from: LocalisedValue,
+    /// The message
+    pub message: LocalisedValue,
+    /// The channel that received this message
+    pub channel: Channel,
+}
+
+impl From<ReceiveTextEventSchema> for ReceiveTextEvent {
+    fn from(value: ReceiveTextEventSchema) -> Self {
+
+        let from = LocalisedValue {
+            value: value.from,
+            localised_value: value.localised_from,
+        };
+        let message = LocalisedValue {
+            value: value.message,
+            localised_value: value.localised_message,
+        };
+        Self{
+            event_meta: value.event_meta,
+            from,
+            message,
+            channel: value.channel,
+        }
+    }
+}
+
+/// The schema for the ReceiveText event
 ///
 /// Example:
 ///
@@ -17,9 +51,9 @@ use crate::events::common::EventMeta;
 /// }
 ///
 /// Read the docs: https://elite-journal.readthedocs.io/en/latest/Other%20Events/#receivetext
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-#[serde(rename_all = "PascalCase")]
-pub struct ReceiveTextEvent {
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(rename_all="PascalCase")]
+pub(crate) struct ReceiveTextEventSchema {
     /// The event meta data
     #[serde(flatten)]
     pub event_meta: EventMeta,
@@ -36,6 +70,21 @@ pub struct ReceiveTextEvent {
     /// The channel that received this message
     pub channel: Channel,
 }
+
+impl From<ReceiveTextEvent> for ReceiveTextEventSchema {
+    fn from(value: ReceiveTextEvent) -> Self {
+        Self{
+            event_meta: value.event_meta,
+            from: value.from.value,
+            localised_from: value.from.localised_value,
+            message: value.message.value,
+            localised_message: value.message.localised_value,
+            channel: value.channel,
+        }
+    }
+}
+
+
 
 /// The channel that message was received on
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -80,10 +129,10 @@ mod tests {
         let event: ReceiveTextEvent = serde_json::from_str(&json).unwrap();
 
         assert_eq!(event.channel, Channel::NPC);
-        assert_eq!(event.message, "$Smuggler_NearDeath03;");
-        assert_eq!(event.localised_message, Some("You almost had me there!".to_string()));
-        assert_eq!(event.from, "$npc_name_decorate:#name=James Gavin;");
-        assert_eq!(event.localised_from, Some("James Gavin".to_string()));
+        assert_eq!(event.message.value, "$Smuggler_NearDeath03;");
+        assert_eq!(event.message.localised_value, Some("You almost had me there!".to_string()));
+        assert_eq!(event.from.value, "$npc_name_decorate:#name=James Gavin;");
+        assert_eq!(event.from.localised_value, Some("James Gavin".to_string()));
 
         assert_eq!(event.event_meta.timestamp, timestamp);
     }

@@ -7,9 +7,14 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added fsd jump event">
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixed failing test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common/system.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common/system.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/fss_signal_discovered.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/fss_signal_discovered.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/receive_text.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other/receive_text.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup/material.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup/material.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/fsd_jump_event.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/fsd_jump_event.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/star_position.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel/fsd_jump/star_position.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +80,7 @@
     "Cargo.Test engineer::tests.executor": "Run",
     "Cargo.Test event::tests.executor": "Run",
     "Cargo.Test events::commander::tests::test_deserialize_rank_event.executor": "Run",
+    "Cargo.Test events::common::system::tests::test_deserialize_faction.executor": "Run",
     "Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers.executor": "Run",
     "Cargo.Test events::engineer::tests::deserialize_event_single_engineer.executor": "Run",
     "Cargo.Test events::engineer::tests::test_deserialize_single_engineer_known.executor": "Run",
@@ -103,6 +109,7 @@
     "Cargo.Test events::scan::event::tests::test_scan_star_event_no_orbital_data.executor": "Run",
     "Cargo.Test events::scan::event::tests::test_scan_star_event_no_rings.executor": "Run",
     "Cargo.Test events::ship::fsd_target::tests::test_fsd_target.executor": "Run",
+    "Cargo.Test events::travel::fsd_jump::fsd_jump_event::tests::test_deserialize_fsd_jump_event.executor": "Run",
     "Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization.executor": "Run",
     "Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization.executor": "Run",
     "Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace.executor": "Run",
@@ -118,6 +125,7 @@
     "Cargo.Test reputation::tests.executor": "Run",
     "Cargo.Test ship_locker::tests.executor": "Run",
     "Cargo.Test star_position::tests.executor": "Run",
+    "Cargo.Test system::tests.executor": "Run",
     "Cargo.Test.executor": "Run",
     "Cargo.clean.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -149,9 +157,9 @@
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13971657" />
-      <window_info active="true" id="Commit" order="1" visible="true" weight="0.13971657" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.11319041" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10919331" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.11319041" />
+      <window_info id="Commit" order="2" weight="0.0703125" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Python Packages" />
@@ -163,8 +171,8 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.33016306" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info active="true" anchor="bottom" id="Build" order="5" visible="true" weight="0.33016306" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.33016306" />
+      <window_info active="true" anchor="bottom" id="Build" order="5" visible="true" weight="0.29664856" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.29664856" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="documentation.v2" show_stripe_button="false" side_tool="true" />
@@ -199,7 +207,7 @@
       <command value="cargo  clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test fsd_jump_event::tests">
+  <component name="RunManager" selected="Cargo.Test fss_signal_discovered::tests">
     <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
@@ -258,8 +266,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::fsd_jump::star_position::tests::test_star_position_deserialization -- --exact" />
+    <configuration name="Test events::common::system::tests::test_deserialize_faction" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::common::system::tests::test_deserialize_faction -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -275,25 +283,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::fsd_jump::star_position::tests::test_star_position_serialization -- --exact" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise -- --exact" />
+    <configuration name="Test events::travel::fsd_jump::fsd_jump_event::tests::test_deserialize_fsd_jump_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::fsd_jump::fsd_jump_event::tests::test_deserialize_fsd_jump_event -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -326,8 +317,25 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test star_position::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::travel::fsd_jump::star_position::tests" />
+    <configuration name="Test fss_signal_discovered::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::exploration::fss_signal_discovered::tests" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test system::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::common::system::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -366,19 +374,19 @@
       <item itemvalue="Cargo.Test" />
       <item itemvalue="Cargo.List events" />
       <item itemvalue="Cargo.List events - scratch" />
-      <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization" />
-      <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization" />
-      <item itemvalue="Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" />
+      <item itemvalue="Cargo.Test events::common::system::tests::test_deserialize_faction" />
+      <item itemvalue="Cargo.Test events::travel::fsd_jump::fsd_jump_event::tests::test_deserialize_fsd_jump_event" />
+      <item itemvalue="Cargo.Test fss_signal_discovered::tests" />
+      <item itemvalue="Cargo.Test system::tests" />
       <item itemvalue="Cargo.Test fsd_jump_event::tests" />
-      <item itemvalue="Cargo.Test star_position::tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test fss_signal_discovered::tests" />
         <item itemvalue="Cargo.Test fsd_jump_event::tests" />
-        <item itemvalue="Cargo.Test star_position::tests" />
-        <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization" />
-        <item itemvalue="Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization" />
-        <item itemvalue="Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise" />
+        <item itemvalue="Cargo.Test events::travel::fsd_jump::fsd_jump_event::tests::test_deserialize_fsd_jump_event" />
+        <item itemvalue="Cargo.Test events::common::system::tests::test_deserialize_faction" />
+        <item itemvalue="Cargo.Test system::tests" />
       </list>
     </recent_temporary>
   </component>
@@ -407,7 +415,8 @@
       <workItem from="1736536244027" duration="977000" />
       <workItem from="1736590826896" duration="20183000" />
       <workItem from="1736683691721" duration="14345000" />
-      <workItem from="1737126454021" duration="7609000" />
+      <workItem from="1737126454021" duration="7952000" />
+      <workItem from="1737372195545" duration="13499000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
       <option name="closed" value="true" />
@@ -529,7 +538,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737134646839</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added round trip test for fsd jump event and fixed a couple of build errors">
+      <option name="closed" value="true" />
+      <created>1737135147811</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1737135147811</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fixed failing test">
+      <option name="closed" value="true" />
+      <created>1737135217049</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1737135217049</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +575,9 @@
     <MESSAGE value="Fixed a couple of errors/assumptions after improving error reporting" />
     <MESSAGE value="Added start_jump event" />
     <MESSAGE value="Added fsd jump event" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added fsd jump event" />
+    <MESSAGE value="Added round trip test for fsd jump event and fixed a couple of build errors" />
+    <MESSAGE value="Fixed failing test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed failing test" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -40,3 +40,13 @@ pub struct EmptyEvent {
     #[serde(flatten)]
     pub meta: EventMeta,
 }
+
+/// A structure that allows a field that has both localised and non localised value as one
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[serde(rename_all = "PascalCase")]
+pub struct LocalisedValue {
+    /// The non-localised value
+    pub value: String,
+    /// The localised value
+    pub localised_value: Option<String>
+}

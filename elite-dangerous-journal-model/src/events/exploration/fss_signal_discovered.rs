@@ -1,7 +1,6 @@
 
 use serde::{Deserialize, Serialize};
-use serde_with::serde_as;
-use crate::events::common::EventMeta;
+use crate::events::common::{EventMeta, LocalisedValue};
 
 /// Enum to represent the signal type
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
@@ -43,6 +42,42 @@ pub enum FssSignalType {
 }
 
 /// Event when a Full Spectrum Signal (FSS) is discovered
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[serde(from = "FSSSignalDiscoveredEventSchema", into = "FSSSignalDiscoveredEventSchema")]
+pub struct FSSSignalDiscoveredEvent {
+    /// The event metadata
+    #[serde(flatten)]
+    pub event_meta: EventMeta,
+
+    /// The internal system address reference for the system
+    pub system_address: u64,
+    /// The Name of the signal
+    pub signal_name: LocalisedValue,
+    /// The type of the signal
+    pub signal_type: FssSignalType,
+    /// Is the signal a station
+    pub is_station: Option<bool>,
+}
+
+impl From<FSSSignalDiscoveredEventSchema> for FSSSignalDiscoveredEvent {
+    fn from(value: FSSSignalDiscoveredEventSchema) -> Self {
+        let signal_name = LocalisedValue {
+            value: value.signal_name,
+            localised_value: value.localised_signal_name,
+        };
+
+        Self {
+            event_meta: value.event_meta,
+            system_address: value.system_address,
+            signal_name,
+            signal_type: value.signal_type,
+            is_station: value.is_station,
+        }
+    }
+}
+
+
+/// Schema struct for when a Full Spectrum Signal (FSS) is discovered
 ///
 /// Example:
 /// ```json
@@ -57,10 +92,9 @@ pub enum FssSignalType {
 ///
 /// Example 2:
 ///
-#[serde_as]
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "PascalCase")]
-pub struct FSSSignalDiscoveredEvent {
+pub struct FSSSignalDiscoveredEventSchema {
     /// The event metadata
     #[serde(flatten)]
     pub event_meta: EventMeta,
@@ -78,6 +112,19 @@ pub struct FSSSignalDiscoveredEvent {
     pub is_station: Option<bool>,
 }
 
+impl From<FSSSignalDiscoveredEvent> for FSSSignalDiscoveredEventSchema {
+    fn from(value: FSSSignalDiscoveredEvent) -> Self {
+        Self {
+            event_meta: value.event_meta,
+            system_address: value.system_address,
+            signal_name: value.signal_name.value,
+            localised_signal_name: value.signal_name.localised_value,
+            signal_type: value.signal_type,
+            is_station: value.is_station,
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::events::exploration::fss_signal_discovered::{FSSSignalDiscoveredEvent, FssSignalType};
@@ -92,9 +139,9 @@ mod tests {
         let event: FSSSignalDiscoveredEvent = serde_json::from_str(&json).unwrap();
 
         assert_eq!(event.event_meta.timestamp, timestamp);
-        assert_eq!(event.signal_name, String::from("REIDEN LAKE V5M-WTH"));
+        assert_eq!(event.signal_name.value, String::from("REIDEN LAKE V5M-WTH"));
         assert_eq!(event.signal_type, FssSignalType::FleetCarrier);
-        assert_eq!(event.localised_signal_name, None);
+        assert_eq!(event.signal_name.localised_value, None);
         assert_eq!(event.is_station, Some(true));
     }
 
@@ -108,10 +155,10 @@ mod tests {
         let event: FSSSignalDiscoveredEvent = serde_json::from_str(&json).unwrap();
 
         assert_eq!(event.event_meta.timestamp, timestamp);
-        assert_eq!(event.signal_name, "$MULTIPLAYER_SCENARIO78_TITLE;");
+        assert_eq!(event.signal_name.value, "$MULTIPLAYER_SCENARIO78_TITLE;");
         assert_eq!(event.signal_type, FssSignalType::ResourceExtraction);
         assert_eq!(event.is_station, None);
-        assert_eq!(event.localised_signal_name, Some(String::from("Resource Extraction Site [High]")));
+        assert_eq!(event.signal_name.localised_value, Some(String::from("Resource Extraction Site [High]")));
     }
 
     #[test]
@@ -123,9 +170,9 @@ mod tests {
         let event: FSSSignalDiscoveredEvent = serde_json::from_str(&json).unwrap();
 
         assert_eq!(event.event_meta.timestamp, timestamp);
-        assert_eq!(event.signal_name, String::from("REIDEN LAKE V5M-WTH"));
+        assert_eq!(event.signal_name.value, String::from("REIDEN LAKE V5M-WTH"));
         assert_eq!(event.signal_type, FssSignalType::Unknown(String::from("WibbleFish")));
         assert_eq!(event.is_station, Some(true));
-        assert_eq!(event.localised_signal_name, None);
+        assert_eq!(event.signal_name.localised_value, None);
     }
 }
