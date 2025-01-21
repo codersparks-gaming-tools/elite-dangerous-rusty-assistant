@@ -3,6 +3,7 @@ use notify::{RecommendedWatcher, RecursiveMode};
 use notify_debouncer_full::{new_debouncer, DebounceEventResult, Debouncer, RecommendedCache};
 use std::path::Path;
 use std::time::Duration;
+use tracing::info;
 
 pub struct FileWatcher {
     watcher: Debouncer<RecommendedWatcher, RecommendedCache>,
@@ -26,5 +27,11 @@ impl FileWatcher {
 
     pub fn add_path<P: AsRef<Path>>(&mut self, path: P) -> notify::Result<()> {
         self.watcher.watch(path.as_ref(), RecursiveMode::Recursive)
+    }
+
+    pub fn terminate(self) {
+        info!("File watcher terminating...");
+        let  _ = &self.watcher.stop();
+        info!("...File watcher terminated");
     }
 }
