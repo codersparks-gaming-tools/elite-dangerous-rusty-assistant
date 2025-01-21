@@ -18,6 +18,7 @@ use events::other::music::MusicEvent;
 use events::exploration::scan::event::ScanEvent;
 use events::travel::fsd_target::FSDTargetEvent;
 use crate::events::common::EmptyEvent;
+use crate::events::exploration::material_collected::MaterialCollectedEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
 use crate::events::other::receive_text::ReceiveTextEvent;
@@ -47,6 +48,8 @@ pub enum JournalEvent {
     FuelScoop(FuelScoopEvent),
     /// Game Load event
     LoadGame(LoadGameEvent),
+    /// Material Collected event
+    MaterialCollected(MaterialCollectedEvent),
     /// Materials event
     Materials(MaterialsEvent),
     /// Music event
