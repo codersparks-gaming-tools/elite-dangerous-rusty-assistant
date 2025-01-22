@@ -4,3 +4,6 @@ pub mod commander;
 pub mod game;
 /// Contains model structs for Material events
 pub mod material;
+
+/// Cargo startup event
+pub mod cargo;

@@ -7,11 +7,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added material collected">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/examples/status_file_copier.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup/cargo.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/file_watcher.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/file_watcher.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +22,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Rust File" />
       </list>
     </option>
@@ -30,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="journal_watcher_update_from_read_the_docs" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,7 +43,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;git@github.com:codersparks-gaming-tools/elite-dangerous-rusty-assistant.git&quot;,
-    &quot;accountId&quot;: &quot;a82e1175-8aad-4abe-8cf0-94bd2d6aaa46&quot;
+    &quot;accountId&quot;: &quot;45feb429-8d65-41b9-a9ea-6785e9325230&quot;
   }
 }</component>
   <component name="MacroExpansionManager">
@@ -54,165 +53,64 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2qyiiqchZrjejgdXl81CCYrKktR" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Cargo.Build `Test events::engineer::tests::test_deserialize_single_engineer_known`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test events::exploration::material_collected::tests::test_deserialize_material_collected`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test events::scan::event::tests::test_scan_star_event_all_fields_present`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test file_header::tests`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test fsd_jump_event::tests`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Build `Test material_collected::tests`.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.List events - scratch.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.List events.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Run list_events.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test commander::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test engineer::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test event::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::commander::tests::test_deserialize_rank_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::common::system::tests::test_deserialize_faction.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::engineer::tests::deserialize_event_multiple_engineers.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::engineer::tests::deserialize_event_single_engineer.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::engineer::tests::test_deserialize_single_engineer_known.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::exploration::material_collected::tests::test_deserialize_material_collected.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::file_header::tests::test_deserialize.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::file_header::tests::test_serialize.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::fss_signal_discovered::tests::test_deserialize_fss_signal_discovered.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::fss_signal_discovered::tests::test_deserialize_fss_signal_discovered_example2.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::fss_signal_discovered::tests::test_deserialize_fss_signal_discovered_unkown_signal_type.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::game::tests::test_deserialize_load_game_event_group.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::game::tests::test_deserialize_load_game_event_open.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::game::tests::test_deserialize_load_game_event_solo.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::material::tests::test_deserialize_commander_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::material::tests::test_deserialize_commander_event_empty_raw.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::material::tests::test_deserialize_commander_event_missing_raw.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::music::tests::test_music_main_menu.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::music::tests::test_music_unknown_track.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_no_fields.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_empty_fields.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::odyssey::ship_locker::tests::test_ship_locker_event_with_items.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::other::fuel_scoop::tests::test_fuel_scoop_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::other::receive_text::tests::test_receive_text_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::rank::tests::test_deserialize_rank_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::scan::event::tests::test_scan_event_belt.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::scan::event::tests::test_scan_event_planet_example_1.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::scan::event::tests::test_scan_star_event_all_fields_present.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::scan::event::tests::test_scan_star_event_no_orbital_data.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::scan::event::tests::test_scan_star_event_no_rings.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::ship::fsd_target::tests::test_fsd_target.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::startup::material::tests::test_deserialize_commander_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::travel::fsd_jump::fsd_jump_event::tests::test_deserialize_fsd_jump_event.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_deserialization.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::travel::fsd_jump::star_position::tests::test_star_position_serialization.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_hyperspace.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test events::travel::start_jump::tests::test_deserialize_start_jump_event_supercruise.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test file_header::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test fsd_jump_event::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test fss_signal_discovered::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test fuel_scoop::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test material::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test material_collected::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test music::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test progress::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test rank::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test reputation::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test ship_locker::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test star_position::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test system::tests.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Cargo.clean.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;journal__watcher&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/sparks/dev/elite/elite-dangerous-rusty-assistant/scratch&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
-    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JSON Lines&quot;,
-      &quot;JSON&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Cargo.Test events::startup::cargo::tests::test_cargo_event_deserialization.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "git-widget-placeholder": "journal__watcher",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.first.attach.projects": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" side_tool="true" />
       <window_info id="Merge Requests" />
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12590843" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.11319041" />
-      <window_info id="Commit" order="2" weight="0.11210029" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16624273" />
+      <window_info id="Commit" order="1" weight="0.25" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="Python Packages" />
+      <window_info anchor="bottom" id="Build" />
       <window_info anchor="bottom" id="TODO" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="File Transfer" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
-      <window_info anchor="bottom" id="Problems View" order="2" weight="0.33016306" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.23958334" />
+      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.23958334" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.29664856" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.33016306" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.33016306" />
       <window_info anchor="right" id="PR AI Assistant" />
-      <window_info anchor="right" id="documentation.v2" show_stripe_button="false" side_tool="true" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
-      <window_info anchor="right" id="Python Console" />
       <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
-      <window_info anchor="right" id="AIAssistant" order="1" weight="0.33012354" />
+      <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
       <window_info anchor="right" id="Cargo" order="5" weight="0.2" />
-      <window_info anchor="right" id="RustCargo" order="6" weight="0.16624273" />
+      <window_info anchor="right" id="RustCargo" order="6" weight="0.2" />
     </layout>
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/scratch" />
-      <recent name="$PROJECT_DIR$/scratch/Elite Dangerous - Journal" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/examples" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/odyssey" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/travel" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/other" />
-      <recent name="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/startup" />
-    </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="cargo  clean" />
-    </option>
-  </component>
-  <component name="RunManager" selected="Cargo.Test events::exploration::material_collected::tests::test_deserialize_material_collected">
-    <configuration name="Build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
-      <option name="buildProfileId" value="dev" />
-      <option name="command" value="build" />
+  <component name="RunManager" selected="Cargo.Test cargo::tests">
+    <configuration name="Test cargo::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::startup::cargo::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -228,48 +126,9 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="List events - scratch" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-      <option name="buildProfileId" value="dev" />
-      <option name="command" value="run --example list_events -- $PROJECT_DIR$/scratch/" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs>
-        <env name="RUST_LOG" value="INFO" />
-      </envs>
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="true" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="List events" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-      <option name="buildProfileId" value="dev" />
-      <option name="command" value="run --example list_events -- $PROJECT_DIR$/elite-dangerous-journal-model/examples/Journal.2025-01-04T185730.01.log" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs>
-        <env name="RUST_LOG" value="DEBUG" />
-      </envs>
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test events::exploration::material_collected::tests::test_deserialize_material_collected" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::exploration::material_collected::tests::test_deserialize_material_collected -- --exact" />
+    <configuration name="Test elite-dangerous-rusty-assistant" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="buildProfileId" value="test" />
+      <option name="command" value="test --workspace" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -285,8 +144,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::startup::material::tests::test_deserialize_commander_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::startup::material::tests::test_deserialize_commander_event -- --exact" />
+    <configuration name="Test events::startup::cargo::tests::test_cargo_event_deserialization" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::startup::cargo::tests::test_cargo_event_deserialization -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -302,93 +161,10 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test fss_signal_discovered::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::exploration::fss_signal_discovered::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test material::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::startup::material::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test material_collected::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::exploration::material_collected::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
-      <option name="buildProfileId" value="dev" />
-      <option name="command" value="test" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Cargo.Build" />
-      <item itemvalue="Cargo.Test" />
-      <item itemvalue="Cargo.List events" />
-      <item itemvalue="Cargo.List events - scratch" />
-      <item itemvalue="Cargo.Test events::exploration::material_collected::tests::test_deserialize_material_collected" />
-      <item itemvalue="Cargo.Test events::startup::material::tests::test_deserialize_commander_event" />
-      <item itemvalue="Cargo.Test fss_signal_discovered::tests" />
-      <item itemvalue="Cargo.Test material::tests" />
-      <item itemvalue="Cargo.Test material_collected::tests" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cargo.Test events::exploration::material_collected::tests::test_deserialize_material_collected" />
-        <item itemvalue="Cargo.Test material_collected::tests" />
-        <item itemvalue="Cargo.Test material::tests" />
-        <item itemvalue="Cargo.Test events::startup::material::tests::test_deserialize_commander_event" />
-        <item itemvalue="Cargo.Test fss_signal_discovered::tests" />
+        <item itemvalue="Cargo.Test cargo::tests" />
+        <item itemvalue="Cargo.Test events::startup::cargo::tests::test_cargo_event_deserialization" />
       </list>
     </recent_temporary>
   </component>
@@ -405,201 +181,14 @@
       <updated>1735641346443</updated>
       <workItem from="1735641348043" duration="2921000" />
       <workItem from="1735728465418" duration="896000" />
-      <workItem from="1736167002715" duration="3465000" />
-      <workItem from="1736177239915" duration="8221000" />
-      <workItem from="1736241727336" duration="3717000" />
-      <workItem from="1736251141260" duration="22829000" />
-      <workItem from="1736350918519" duration="10073000" />
-      <workItem from="1736437727561" duration="7385000" />
-      <workItem from="1736515770983" duration="3534000" />
-      <workItem from="1736525022618" duration="3012000" />
-      <workItem from="1736528585873" duration="6763000" />
-      <workItem from="1736536244027" duration="977000" />
-      <workItem from="1736590826896" duration="20183000" />
-      <workItem from="1736683691721" duration="14345000" />
-      <workItem from="1737126454021" duration="7952000" />
-      <workItem from="1737372195545" duration="16122000" />
-      <workItem from="1737455687074" duration="1937000" />
-      <workItem from="1737458364868" duration="3643000" />
+      <workItem from="1737464693038" duration="138000" />
+      <workItem from="1737465225547" duration="1376000" />
+      <workItem from="1737546351176" duration="1804000" />
     </task>
-    <task id="LOCAL-00001" summary="Implemented file watcher with Recommended Watcher">
-      <option name="closed" value="true" />
-      <created>1736184555570</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1736184555570</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Implemented file watcher with Recommended Watcher">
-      <option name="closed" value="true" />
-      <created>1736186054835</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1736186054836</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Started to added events to be processed">
-      <option name="closed" value="true" />
-      <created>1736274823973</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1736274823973</updated>
-    </task>
-    <task id="LOCAL-00004" summary="More progress on mapping events">
-      <option name="closed" value="true" />
-      <created>1736361887417</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1736361887417</updated>
-    </task>
-    <task id="LOCAL-00005" summary="more progress and fixing warnings">
-      <option name="closed" value="true" />
-      <created>1736441173871</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1736441173871</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Implemented MusicEvent">
-      <option name="closed" value="true" />
-      <created>1736517454877</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1736517454877</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added missing docs">
-      <option name="closed" value="true" />
-      <created>1736523827630</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1736523827630</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added scan event type">
-      <option name="closed" value="true" />
-      <created>1736613696686</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1736613696686</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Fixing some spelling mistakes">
-      <option name="closed" value="true" />
-      <created>1736683969159</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1736683969159</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added FSDTarget and some slight re-organisation">
-      <option name="closed" value="true" />
-      <created>1736688059277</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1736688059277</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Fixing missing documentation">
-      <option name="closed" value="true" />
-      <created>1736688299777</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1736688299777</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Updated list_Events to have more useful error docs">
-      <option name="closed" value="true" />
-      <created>1736691497428</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1736691497428</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fixed a couple of errors/assumptions after improving error reporting">
-      <option name="closed" value="true" />
-      <created>1736692155642</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1736692155642</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Added start_jump event">
-      <option name="closed" value="true" />
-      <created>1737129301285</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1737129301285</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added fsd jump event">
-      <option name="closed" value="true" />
-      <created>1737134646839</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1737134646839</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Added round trip test for fsd jump event and fixed a couple of build errors">
-      <option name="closed" value="true" />
-      <created>1737135147811</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1737135147811</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fixed failing test">
-      <option name="closed" value="true" />
-      <created>1737135217049</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1737135217049</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Refactored to use LocalisedValues structs instead of having both value and value_Localised.&#10;&#10;Also fixed missing fields on FSDJump">
-      <option name="closed" value="true" />
-      <created>1737386718941</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1737386718941</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added material collected">
-      <option name="closed" value="true" />
-      <created>1737456129413</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1737456129413</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented file watcher with Recommended Watcher" />
-    <MESSAGE value="Started to added events to be processed" />
-    <MESSAGE value="More progress on mapping events" />
-    <MESSAGE value="more progress and fixing warnings" />
-    <MESSAGE value="Implemented MusicEvent" />
-    <MESSAGE value="Added missing docs" />
-    <MESSAGE value="Added scan event type" />
-    <MESSAGE value="Fixing some spelling mistakes" />
-    <MESSAGE value="Added FSDTarget and some slight re-organisation" />
-    <MESSAGE value="Fixing missing documentation" />
-    <MESSAGE value="Updated list_Events to have more useful error docs" />
-    <MESSAGE value="Fixed a couple of errors/assumptions after improving error reporting" />
-    <MESSAGE value="Added start_jump event" />
-    <MESSAGE value="Added fsd jump event" />
-    <MESSAGE value="Added round trip test for fsd jump event and fixed a couple of build errors" />
-    <MESSAGE value="Fixed failing test" />
-    <MESSAGE value="Refactored to use LocalisedValues structs instead of having both value and value_Localised.&#10;&#10;Also fixed missing fields on FSDJump" />
-    <MESSAGE value="Added material collected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added material collected" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

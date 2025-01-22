@@ -22,6 +22,7 @@ use crate::events::exploration::material_collected::MaterialCollectedEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
 use crate::events::other::receive_text::ReceiveTextEvent;
+use crate::events::startup::cargo::CargoEvent;
 use crate::events::travel::fsd_jump::fsd_jump_event::FSDJumpEvent;
 use crate::events::travel::start_jump::StartJumpEvent;
 
@@ -31,6 +32,8 @@ use crate::events::travel::start_jump::StartJumpEvent;
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "event")]
 pub enum JournalEvent {
+    /// Cargo event
+    Cargo(CargoEvent),
     /// Commander event
     Commander(CommanderEvent),
     /// Engineer event

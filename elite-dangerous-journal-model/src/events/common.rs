@@ -50,3 +50,15 @@ pub struct LocalisedValue {
     /// The localised value
     pub localised_value: Option<String>
 }
+
+impl LocalisedValue {
+    /// If the localise value is present it will return that value otherwise it returns the value
+    pub fn get_value(&self) -> &str {
+
+        if self.localised_value.is_some() {
+            self.localised_value.as_ref().unwrap();
+        }
+
+        self.value.as_str()
+    }
+}
