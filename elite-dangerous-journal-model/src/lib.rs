@@ -20,6 +20,7 @@ use events::travel::fsd_target::FSDTargetEvent;
 use crate::events::common::EmptyEvent;
 use crate::events::exploration::material_collected::MaterialCollectedEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
+use crate::events::other::drone::LaunchDroneEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
 use crate::events::other::receive_text::ReceiveTextEvent;
 use crate::events::startup::cargo::CargoEvent;
@@ -29,54 +30,33 @@ use crate::events::travel::start_jump::StartJumpEvent;
 /// The journal event enum allows the deserialisation of the events from the elite dangerous journal log
 /// It uses the ```event``` json field to determine what enum variant to load and then completes the data
 /// for the relevant struct
+#[allow(missing_docs)]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(tag = "event")]
 pub enum JournalEvent {
-    /// Cargo event
     Cargo(CargoEvent),
-    /// Commander event
     Commander(CommanderEvent),
-    /// Engineer event
     EngineerProgress(EngineerProgressEvent),
-    /// Fileheader event
     #[serde(rename = "Fileheader")]
     FileHeader(FileHeaderEvent),
-    /// FSDJump event
     FSDJump(FSDJumpEvent),
-    /// FSDTarget event
     FSDTarget(FSDTargetEvent),
-    /// FSS Signal Discovered event
     FSSSignalDiscovered(FSSSignalDiscoveredEvent),
-    /// Fuel Scoop event
     FuelScoop(FuelScoopEvent),
-    /// Game Load event
+    LaunchDrone(LaunchDroneEvent),
     LoadGame(LoadGameEvent),
-    /// Material Collected event
     MaterialCollected(MaterialCollectedEvent),
-    /// Materials event
     Materials(MaterialsEvent),
-    /// Music event
     Music(MusicEvent),
-    /// NavRoute event - This is an empty event
     NavRoute(EmptyEvent),
-    /// NavRouteClear event - This is an empty event
     NavRouteClear(EmptyEvent),
-    /// Progress Rank event
     Progress(CommanderProgressEvent),
-    /// Commander Rank event
     Rank(CommanderRankEvent),
-    /// Receive text event
     ReceiveText(ReceiveTextEvent),
-    /// Reputation event,
     Reputation(CommanderReputationEvent),
-    /// Scan event
     Scan(ScanEvent),
-    /// ShipLocker event
     ShipLocker(ShipLockerEvent),
-    /// StartJump event
     StartJump(StartJumpEvent),
-
-    /// Game shutdown event
     #[serde(rename= "Shutdown")]
     ShutDown(EmptyEvent),
     /// This is a catch all for any other event in the file to allow iterative development and also should frontier add an event in the future

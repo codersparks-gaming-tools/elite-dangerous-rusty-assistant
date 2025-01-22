@@ -3,5 +3,8 @@ pub mod music;
 /// Fuel Scoop event
 pub mod fuel_scoop;
 
-/// Recieve Text Event
+/// Receive Text Event
 pub mod receive_text;
+
+/// Drone events
+pub mod drone;
