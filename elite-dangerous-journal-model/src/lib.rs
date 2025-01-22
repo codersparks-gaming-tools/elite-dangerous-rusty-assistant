@@ -24,6 +24,7 @@ use crate::events::other::drone::LaunchDroneEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
 use crate::events::other::receive_text::ReceiveTextEvent;
 use crate::events::startup::cargo::CargoEvent;
+use crate::events::trade::mining::MiningRefinedEvent;
 use crate::events::travel::fsd_jump::fsd_jump_event::FSDJumpEvent;
 use crate::events::travel::start_jump::StartJumpEvent;
 
@@ -47,6 +48,7 @@ pub enum JournalEvent {
     LoadGame(LoadGameEvent),
     MaterialCollected(MaterialCollectedEvent),
     Materials(MaterialsEvent),
+    MiningRefined(MiningRefinedEvent),
     Music(MusicEvent),
     NavRoute(EmptyEvent),
     NavRouteClear(EmptyEvent),
