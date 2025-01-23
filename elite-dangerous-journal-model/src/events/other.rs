@@ -8,3 +8,6 @@ pub mod receive_text;
 
 /// Drone events
 pub mod drone;
+
+/// Fuel resevoir replennished event
+pub mod reservoir_replenished;
