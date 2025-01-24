@@ -1,6 +1,6 @@
 use std::time::Duration;
 use futures::StreamExt;
-use tokio::spawn;
+use tokio::{signal, spawn};
 use tracing::{error, info};
 use elite_dangerous_journal_watcher::file_watcher::FileWatcher;
 
@@ -31,6 +31,7 @@ async fn main() -> Result<(), ()> {
         tokio::time::sleep(std::time::Duration::from_secs(1)).await;
     }
 
+    
     watcher_task.await.expect("watcher task failed");
 
     Ok(())
