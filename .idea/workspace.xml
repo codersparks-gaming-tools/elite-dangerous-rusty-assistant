@@ -7,12 +7,12 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Fixing some build warnings">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/journal_file_processor.rs" afterDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added initial implementation of journal log file parsing that just prints path">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/elite_journal_watcher.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/elite_journal_watcher.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/journal_file_processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/journal_file_processor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/log_event_processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/log_event_processor.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +20,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="RsBuildProfile:test" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="RsBuildProfile:dev" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -50,6 +50,9 @@
 }</component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="75YdNmZs" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -131,7 +134,24 @@
   <component name="RsExternalLinterProjectSettings">
     <option name="runOnTheFly" value="true" />
   </component>
-  <component name="RunManager" selected="Cargo.Test reservoir_replenished::tests">
+  <component name="RunManager" selected="Cargo.Build All">
+    <configuration name="Build All" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="command" value="build" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test elite-dangerous-rusty-assistant" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="buildProfileId" value="test" />
       <option name="command" value="test --workspace" />
@@ -202,6 +222,7 @@
       </method>
     </configuration>
     <configuration name="Test reservoir_replenished::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="buildProfileId" value="dev" />
       <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::reservoir_replenished::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
@@ -235,6 +256,15 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Cargo.Test elite-dangerous-rusty-assistant" />
+      <item itemvalue="Cargo.Build All" />
+      <item itemvalue="Cargo.Test events::other::drone::tests::test_launch_drone_event_deserialization" />
+      <item itemvalue="Cargo.Test events::other::reservoir_replenished::tests::test_reservoir_replenished_event_round_trip" />
+      <item itemvalue="Cargo.Test events::trade::mining::tests::test_mining_refined_event_deserialization" />
+      <item itemvalue="Cargo.Test reservoir_replenished::tests" />
+      <item itemvalue="Cargo.Test tests::test_deserialize_serialize_journal_event_cargo" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Test reservoir_replenished::tests" />
@@ -263,7 +293,7 @@
       <workItem from="1737546351176" duration="4847000" />
       <workItem from="1737631340656" duration="9023000" />
       <workItem from="1737724850900" duration="12450000" />
-      <workItem from="1737804434922" duration="16239000" />
+      <workItem from="1737804434922" duration="19690000" />
     </task>
     <task id="LOCAL-00001" summary="Added cargo event and also added a &quot;get_value&quot; function from localised value to automatically return either the localised value if present or the value">
       <option name="closed" value="true" />
@@ -329,7 +359,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737816612538</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added initial implementation of journal log file parsing that just prints path">
+      <option name="closed" value="true" />
+      <created>1737820961710</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737820961710</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +393,8 @@
     <MESSAGE value="Added functionality to start elite dangerous journal watcher (but it only logs the notify events at the moment)" />
     <MESSAGE value="Simplified the file processor by removing file watcher and constructing directly from journal watcher" />
     <MESSAGE value="Fixing some build warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing some build warnings" />
+    <MESSAGE value="Added initial implementation of journal log file parsing that just prints path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added initial implementation of journal log file parsing that just prints path" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

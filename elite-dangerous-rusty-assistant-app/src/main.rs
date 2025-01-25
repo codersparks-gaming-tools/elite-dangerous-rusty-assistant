@@ -9,7 +9,6 @@ use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
 use elite_dangerous_journal_watcher::elite_journal_watcher;
 use elite_dangerous_journal_watcher::processor::journal_file_processor::JournalFileProcessor;
-use elite_dangerous_journal_watcher::processor::log_event_processor::LogEventProcessor;
 use crate::command_line::process_command_line_args;
 
 #[tokio::main]

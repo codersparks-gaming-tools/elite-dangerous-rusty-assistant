@@ -1,6 +1,6 @@
 use std::path::{Path};
 use std::time::Duration;
-use std::sync::Arc;
+use std::sync::{Arc, RwLock};
 use futures::{SinkExt, StreamExt};
 use futures::channel::oneshot::Receiver;
 use notify::RecursiveMode;
@@ -18,6 +18,7 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
     let config = JournalWatcherConfig::new(working_dir.as_ref().to_path_buf());
 
     debug!("Config: {:?}", config);
+    
 
     // The notify channel is used to passed events from the notify crate to the processor
     let (mut notify_tx, mut notify_rx) = futures::channel::mpsc::channel(50);
@@ -37,12 +38,13 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
 
     watcher.watch(journal_dir, RecursiveMode::Recursive).expect("Failed to add journal dir to file watcher");
 
+    let config_lock = Arc::new(RwLock::new(config));
     let mut join_set = JoinSet::new();
 
     let thread_processor = Arc::clone(&processor);
     join_set.spawn(async move {
         while let Some(res) = notify_rx.next().await {
-            thread_processor.process(res);
+            thread_processor.process(res, Arc::clone(&config_lock));
         }
     });
 
