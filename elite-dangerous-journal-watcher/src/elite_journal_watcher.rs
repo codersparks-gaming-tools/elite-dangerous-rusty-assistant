@@ -36,7 +36,7 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
     ).expect("Failed to create debouncer to watch journal files");
 
     watcher.watch(journal_dir, RecursiveMode::Recursive).expect("Failed to add journal dir to file watcher");
-    
+
     let mut join_set = JoinSet::new();
 
     let thread_processor = Arc::clone(&processor);
@@ -55,7 +55,7 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
         None => { error!("Failed to join thread");}
         Some(res) => {
             let (id, _) = res.expect("Failed to join thread");
-            
+
             if id == terminate_handle.id() {
                 watcher.stop()
             }

@@ -8,6 +8,7 @@ use tokio::signal;
 use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
 use elite_dangerous_journal_watcher::elite_journal_watcher;
+use elite_dangerous_journal_watcher::processor::journal_file_processor::JournalFileProcessor;
 use elite_dangerous_journal_watcher::processor::log_event_processor::LogEventProcessor;
 use crate::command_line::process_command_line_args;
 
@@ -28,22 +29,23 @@ async fn main() -> Result<(),String> {
         debug!("working dir does not exist, attempting to create");
         create_dir_all(&cli_args.working_dir).await.expect(format!("could not create working dir {:?}", cli_args.working_dir).as_str());
     }
-    
+
     let mut task_set = JoinSet::new();
-    
-    let processor = Arc::new(LogEventProcessor::new());
+
+    //let processor = Arc::new(LogEventProcessor::new());
+    let processor = Arc::new(JournalFileProcessor::new());
     
     let journal_dir = cli_args.journal_dir.to_path_buf().clone();
     let working_dir = cli_args.working_dir.to_path_buf().clone();
-    
+
     let (terminate_tx, terminate_rx) = futures::channel::oneshot::channel::<()>();
-    
+
     task_set.spawn(async move {
         elite_journal_watcher::start(working_dir, journal_dir, processor, terminate_rx).await;
     });
-    
+
     info!("Journal watcher started");
-    
+
     task_set.spawn(async move {
         match signal::ctrl_c().await {
             Ok(()) => {
@@ -55,11 +57,11 @@ async fn main() -> Result<(),String> {
             }
         }
     });
-    
+
     match task_set.join_next().await.expect("Failed to join thread") {
         Ok(_) => {Ok(())}
         Err(e) => { Err(e.to_string()) }
     }
-    
+
 } 
 
