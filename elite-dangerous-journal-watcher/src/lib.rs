@@ -3,8 +3,7 @@
 #[deny(missing_docs)]
 
 
-/// The file_watcher module that handles the use of notify crate for watching file changes
-pub mod file_watcher;
+
 /// Module contains the code to implement the elite journal file watchers
 pub mod elite_journal_watcher;
 
