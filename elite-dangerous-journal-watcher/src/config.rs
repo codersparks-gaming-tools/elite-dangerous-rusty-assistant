@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 const CONFIG_FILE_NAME: &str = "journal_watcher.json";
 
 #[derive(Debug)]
-pub(crate) struct JournalWatcherConfig {
+pub struct JournalWatcherConfig {
     metadata: JournalWatcherConfigMetadata,
     pub data: JournalWatcherConfigData
 }
@@ -43,7 +43,7 @@ impl JournalWatcherConfig {
 
 /// Configuration data of the Journal watcher
 #[derive(Serialize, Deserialize, Debug)]
-pub(crate) struct JournalWatcherConfigData {
+pub struct JournalWatcherConfigData {
     pub file_positions: HashMap<PathBuf, u64>,
     pub tick_rate_milli: Option<u64>,
     pub timeout_milli: u64,
@@ -76,6 +76,5 @@ impl JournalWatcherConfigData {
 /// Configuration of metadata for the config to use
 #[derive(Debug)]
 pub struct JournalWatcherConfigMetadata {
-
     config_file_location: PathBuf,
 }

@@ -5,9 +5,9 @@ mod command_line;
 use std::sync::Arc;
 use tokio::fs::create_dir_all;
 use tokio::signal;
-use tokio::task::{JoinError, JoinSet};
+use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
-use elite_dangerous_journal_watcher::{elite_journal_watcher, processor};
+use elite_dangerous_journal_watcher::elite_journal_watcher;
 use elite_dangerous_journal_watcher::processor::log_event_processor::LogEventProcessor;
 use crate::command_line::process_command_line_args;
 

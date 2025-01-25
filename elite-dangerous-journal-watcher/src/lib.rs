@@ -8,5 +8,5 @@
 pub mod elite_journal_watcher;
 
 /// Module contains the code to persist configuration of watchers
-mod config;
+pub mod config;
 pub mod processor;

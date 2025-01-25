@@ -5,7 +5,7 @@ use futures::{SinkExt, StreamExt};
 use futures::channel::oneshot::Receiver;
 use notify::RecursiveMode;
 use notify_debouncer_full::{new_debouncer, DebounceEventResult};
-use tokio::task::{Id, JoinError, JoinSet};
+use tokio::task::JoinSet;
 use tracing::{debug, error, info};
 use crate::config::JournalWatcherConfig;
 use crate::processor::NotifierProcessor;
