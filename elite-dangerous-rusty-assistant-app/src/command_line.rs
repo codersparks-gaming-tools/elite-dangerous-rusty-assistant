@@ -17,9 +17,13 @@ struct CliArgsProxy {
     #[arg(short, long)]
     pub(crate) working_dir : Option<PathBuf>,
     
+    /// optional timeout for senders, if not supplied this will default to 500ms
+    #[arg(short, long, default_value_t = 500)]
+    pub(crate) sender_timeout : u64,
+    
     /// Verbosity of application
     #[arg(short, long, action = clap::ArgAction::Count, default_value_t = 0)]
-    verbosity: u8,
+    pub(crate) verbosity: u8,
 }
 
 /// The actual struct that the application will use
@@ -31,13 +35,17 @@ pub struct CliArgs {
     
     /// The working directory
     pub working_dir : PathBuf,
+    
+    /// The sender timeout
+    pub sender_timeout : u64,
 }
  
 impl From<CliArgsProxy> for CliArgs {
     fn from(value: CliArgsProxy) -> Self {
         Self {
             journal_dir: value.journal.unwrap(),
-            working_dir: value.working_dir.unwrap()
+            working_dir: value.working_dir.unwrap(),
+            sender_timeout: value.sender_timeout
         }
     }
 }

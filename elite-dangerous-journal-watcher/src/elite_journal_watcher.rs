@@ -13,6 +13,40 @@ use crate::processor::NotifierProcessor;
 
 /// Function that will start a file watcher for the files in directory journal_dir. It will then
 /// use the process function of the supplied processor to process that Notify event
+/// 
+/// This is designed to be spawned inside of a task. If any message is received on the terminate_rx
+/// channel then the journal watcher will terminate
+/// 
+/// # Arguments
+/// 
+/// * 'working_dir'  - Path to directory to use during run time and for persisting configuration
+/// * 'journal_dir'  - Path where the journal files are stored
+/// * 'processor'    - Implementation of the [NotifierProcessor](NotifierProcessor) used to process the [notify](notify) events
+/// * 'terminate_rx' - The [Receiver](Receiver) end of a [OneShot](futures::channel::oneshot) channel that is used to send termination message to the watcher
+/// # Non-Running Example
+/// ```ignore
+///     let mut task_set = tokio::task::JoinSet::new();
+///     task_set.spawn(async move {
+///         elite_dangerous_journal_watcher::elite_journal_watcher::start(working_dir, journal_dir, processor, terminate_rx).await;
+///     });
+///
+/// 
+///     task_set.spawn(async move {
+///         match tokio::signal::ctrl_c().await {
+///             Ok(()) => {
+///                 terminate_tx.send(()).expect("Failed to send shutdown message");
+///             }
+///             Err(e) => {
+///                 error!("Unable to listen for shutdown signal: {}", e);
+///             }
+///         }
+///     });
+/// 
+///     match task_set.join_next().await.expect("Failed to join thread") {
+///         Ok(_) => {Ok(())}
+///         Err(e) => { Err(e.to_string()) }
+///     }
+///```
 pub async fn start<D, P>(working_dir: D, journal_dir: D, processor: Arc<P>, terminate_rx: Receiver<()>)
 where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
     let config = JournalWatcherConfig::new(working_dir.as_ref().to_path_buf());
@@ -21,7 +55,7 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
     
 
     // The notify channel is used to passed events from the notify crate to the processor
-    let (mut notify_tx, mut notify_rx) = futures::channel::mpsc::channel(50);
+    let (mut notify_tx, mut notify_rx) = futures::channel::mpsc::channel(1024);
 
     let tick_rate = match config.data.tick_rate_milli {
         None => { None }
@@ -44,7 +78,7 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
     let thread_processor = Arc::clone(&processor);
     join_set.spawn(async move {
         while let Some(res) = notify_rx.next().await {
-            thread_processor.process(res, Arc::clone(&config_lock));
+            let _ = thread_processor.process(res, Arc::clone(&config_lock)).await;
         }
     });
 
@@ -63,11 +97,5 @@ where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
             }
         }
     }
-
-
-
-
-
-
 }
 

@@ -1,10 +1,10 @@
 use elite_dangerous_journal_model::events::exploration::fss_signal_discovered::FssSignalType;
-use elite_dangerous_journal_model::JournalEvent;
 use std::collections::HashSet;
 use std::fs::{metadata, File};
 use std::io::{BufRead, BufReader};
 use std::path::PathBuf;
 use tracing::{debug, error, info, warn};
+use elite_dangerous_journal_model::events::JournalEvent;
 
 fn main() {
     tracing_subscriber::fmt::init();

@@ -7,12 +7,16 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added initial implementation of journal log file parsing that just prints path">
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Implemented application that will create a JournalEvent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/examples/list_events.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/elite_journal_watcher.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/elite_journal_watcher.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/journal_file_processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/journal_file_processor.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/log_event_processor.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-watcher/src/processor/log_event_processor.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/command_line.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/command_line.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="journal_watcher" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,6 +72,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Cargo.Build All.executor": "Run",
     "Cargo.Build `Test events::other::drone::tests::test_launch_drone_event_deserialization`.executor": "Run",
     "Cargo.Build `Test tests::test_deserialize_serialize_journal_event_cargo`.executor": "Run",
     "Cargo.Test cargo::tests.executor": "Run",
@@ -80,7 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "journal__watcher__dev/application",
+    "git-widget-placeholder": "dev/move__journal__run__logic",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -136,6 +141,7 @@
   </component>
   <component name="RunManager" selected="Cargo.Build All">
     <configuration name="Build All" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="buildProfileId" value="dev" />
       <option name="command" value="build" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
@@ -294,6 +300,7 @@
       <workItem from="1737631340656" duration="9023000" />
       <workItem from="1737724850900" duration="12450000" />
       <workItem from="1737804434922" duration="19690000" />
+      <workItem from="1737889067389" duration="8337000" />
     </task>
     <task id="LOCAL-00001" summary="Added cargo event and also added a &quot;get_value&quot; function from localised value to automatically return either the localised value if present or the value">
       <option name="closed" value="true" />

@@ -7,11 +7,13 @@ use crate::processor::NotifierProcessor;
 pub struct LogEventProcessor {}
 
 impl NotifierProcessor for LogEventProcessor {
-    fn process(&self, event: DebounceEventResult, _ : Arc<RwLock<JournalWatcherConfig>>) {
+    async fn process(&self, event: DebounceEventResult, _ : Arc<RwLock<JournalWatcherConfig>>) -> Result<(), String> {
         match event {
             Ok(event) => info!("{:?}", event) ,
             Err(err) => { error!("{:?}", err);},
         }
+        
+        Ok(())
     }
 }
 

@@ -5,6 +5,7 @@ mod command_line;
 use std::sync::Arc;
 use tokio::fs::create_dir_all;
 use tokio::signal;
+use tokio::sync::mpsc::channel;
 use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
 use elite_dangerous_journal_watcher::elite_journal_watcher;
@@ -31,11 +32,12 @@ async fn main() -> Result<(),String> {
 
     let mut task_set = JoinSet::new();
 
-    //let processor = Arc::new(LogEventProcessor::new());
-    let processor = Arc::new(JournalFileProcessor::new());
-    
+
     let journal_dir = cli_args.journal_dir.to_path_buf().clone();
     let working_dir = cli_args.working_dir.to_path_buf().clone();
+    
+    let (event_tx, mut event_rx) = channel(1024);
+    let processor = Arc::new(JournalFileProcessor::new(event_tx, cli_args.sender_timeout));
 
     let (terminate_tx, terminate_rx) = futures::channel::oneshot::channel::<()>();
 
@@ -54,6 +56,13 @@ async fn main() -> Result<(),String> {
             Err(e) => {
                 error!("Unable to listen for shutdown signal: {}", e);
             }
+        }
+    });
+    
+    task_set.spawn(async move {
+        
+        while let Some(event) = event_rx.recv().await {
+            info!("{:?}", event);
         }
     });
 

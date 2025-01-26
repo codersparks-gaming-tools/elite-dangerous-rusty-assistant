@@ -2,20 +2,32 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Seek, SeekFrom};
 use std::path::PathBuf;
 use std::sync::{Arc, RwLock};
+use std::time::Duration;
 use crate::processor::NotifierProcessor;
 use lazy_regex::regex_is_match;
 use notify::EventKind;
 use notify_debouncer_full::DebounceEventResult;
-
+use tokio::sync::mpsc::Sender;
 use tracing::{debug, error, info, trace, warn};
-use elite_dangerous_journal_model::JournalEvent;
+use elite_dangerous_journal_model::events::{EliteDangerousEvent, JournalEvent};
 use crate::config::JournalWatcherConfig;
 
-pub struct JournalFileProcessor {}
+
+/// The journal file processor is used as a processor passed to the [start](crate::elite_journal_watcher::start) function
+/// This processes the [DebounceEventResult](DebounceEventResult) to produce a [EliteDangerousEvent](EliteDangerousEvent) for the data being process
+///
+///
+pub struct JournalFileProcessor {
+
+    /// The [MSPC Channel Sender](Sender) to publish the EliteDangerousEvents](EliteDangerousEvent) to
+    event_tx: Sender<EliteDangerousEvent>,
+    /// The timeout in (milliseconds) to wait for the sender to become available
+    sender_timeout: Duration,
+}
 
 
 impl NotifierProcessor for JournalFileProcessor {
-    fn process(&self, event_list: DebounceEventResult, config: Arc<RwLock<JournalWatcherConfig>>) {
+    async fn process(&self, event_list: DebounceEventResult, config: Arc<RwLock<JournalWatcherConfig>>) -> Result<(), String> {
         for debounced_event in event_list.expect("Failed to get event list") {
             let event = debounced_event.event;
             trace!("Processing event: {:?}", event);
@@ -30,23 +42,27 @@ impl NotifierProcessor for JournalFileProcessor {
                             filename
                         ) {
                             debug!("Detected Journal file modified: {:?}", path);
-                            self.process_log_file(path, Arc::clone(&config));
+                            self.process_log_file(path, Arc::clone(&config)).await;
                         }
                     }
                 }
                 _ => {}
             }
         }
+        Ok(())
     }
 }
 
 impl JournalFileProcessor {
 
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(event_tx: Sender<EliteDangerousEvent>, sender_timeout: u64) -> Self {
+        Self {
+            event_tx,
+            sender_timeout: Duration::from_millis(sender_timeout),
+        }
     }
 
-    fn process_log_file(&self, file_path: PathBuf, config_lock: Arc<RwLock<JournalWatcherConfig>>) {
+    async fn process_log_file(&self, file_path: PathBuf, config_lock: Arc<RwLock<JournalWatcherConfig>>) {
 
         let mut file_pos: u64;
         match config_lock.read() {
@@ -87,6 +103,15 @@ impl JournalFileProcessor {
                     match event {
                         JournalEvent::Unknown => { warn!("Unknown event: {}", line);}
                         _ => {}
+                    }
+                    
+                    let ed_event = EliteDangerousEvent::JournalEvent(event);
+
+                    match self.event_tx.send_timeout(ed_event, self.sender_timeout).await {
+                        Ok(_) => { trace!("Event sent to channel"); }
+                        Err(e) => { 
+                            error!("Failed to send event to channel: {}", e);
+                        }
                     }
                 }
                 Err(e) => {
