@@ -8,11 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Implemented application that will create a JournalEvent">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_accepted.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/common.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_abandoned.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_completed.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_completed/components.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_failed.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_redirected.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/common.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_accepted.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/station_services/missions/mission_accepted.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev/move_journal_run_logic" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,13 +79,20 @@
     "Cargo.Test events::other::drone::tests::test_launch_drone_event_deserialization.executor": "Run",
     "Cargo.Test events::other::reservoir_replenished::tests::test_reservoir_replenished_event_round_trip.executor": "Run",
     "Cargo.Test events::startup::cargo::tests::test_cargo_event_deserialization.executor": "Run",
+    "Cargo.Test events::station_services::missions::mission_completed::tests::test_deserialize_mission_completed_event.executor": "Run",
+    "Cargo.Test events::station_services::missions::mission_redirected::tests::test_deserialize_mission_redirected_event.executor": "Run",
+    "Cargo.Test events::station_services::missions::mission_redirected::tests::test_serialize_mission_redirected_event.executor": "Run",
     "Cargo.Test events::trade::mining::tests::test_mining_refined_event_deserialization.executor": "Run",
+    "Cargo.Test mission_abandoned::tests.executor": "Run",
+    "Cargo.Test mission_accepted::tests.executor": "Run",
+    "Cargo.Test mission_failed::tests.executor": "Run",
+    "Cargo.Test mission_redirected::tests.executor": "Run",
     "Cargo.Test reservoir_replenished::tests.executor": "Run",
     "Cargo.Test tests::test_deserialize_serialize_journal_event_cargo.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "dev/misison__accepted__event",
+    "git-widget-placeholder": "dev/model__work",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/coder/RustroverProjects/elite-dangerous-rusty-assistant/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_02_2025_13_46_[Changes]/shelved.patch",
     "node.js.detected.package.eslint": "true",
@@ -172,8 +184,27 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::other::drone::tests::test_launch_drone_event_deserialization" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::drone::tests::test_launch_drone_event_deserialization -- --exact" />
+    <configuration name="Test events::station_services::missions::mission_completed::tests::test_deserialize_mission_completed_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::station_services::missions::mission_completed::tests::test_deserialize_mission_completed_event -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs>
+        <env name="RUST_BACKTRACE" value="full" />
+      </envs>
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test events::station_services::missions::mission_redirected::tests::test_serialize_mission_redirected_event" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::station_services::missions::mission_redirected::tests::test_serialize_mission_redirected_event -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -189,8 +220,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::other::reservoir_replenished::tests::test_reservoir_replenished_event_round_trip" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::reservoir_replenished::tests::test_reservoir_replenished_event_round_trip -- --exact" />
+    <configuration name="Test mission_accepted::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::station_services::missions::mission_accepted::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -206,8 +237,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test events::trade::mining::tests::test_mining_refined_event_deserialization" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::trade::mining::tests::test_mining_refined_event_deserialization -- --exact" />
+    <configuration name="Test mission_failed::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::station_services::missions::mission_failed::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -223,26 +254,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test reservoir_replenished::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="buildProfileId" value="dev" />
-      <option name="command" value="test --package elite-dangerous-journal-model --lib events::other::reservoir_replenished::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <envs />
-      <option name="emulateTerminal" value="true" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="buildTarget" value="REMOTE" />
-      <option name="backtrace" value="SHORT" />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test tests::test_deserialize_serialize_journal_event_cargo" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package elite-dangerous-journal-model --lib tests::test_deserialize_serialize_journal_event_cargo -- --exact" />
+    <configuration name="Test mission_redirected::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package elite-dangerous-journal-model --lib events::station_services::missions::mission_redirected::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
       <option name="emulateTerminal" value="true" />
@@ -261,19 +274,19 @@
     <list>
       <item itemvalue="Cargo.Test elite-dangerous-rusty-assistant" />
       <item itemvalue="Cargo.Build All" />
-      <item itemvalue="Cargo.Test events::other::drone::tests::test_launch_drone_event_deserialization" />
-      <item itemvalue="Cargo.Test events::other::reservoir_replenished::tests::test_reservoir_replenished_event_round_trip" />
-      <item itemvalue="Cargo.Test events::trade::mining::tests::test_mining_refined_event_deserialization" />
-      <item itemvalue="Cargo.Test reservoir_replenished::tests" />
-      <item itemvalue="Cargo.Test tests::test_deserialize_serialize_journal_event_cargo" />
+      <item itemvalue="Cargo.Test mission_failed::tests" />
+      <item itemvalue="Cargo.Test events::station_services::missions::mission_completed::tests::test_deserialize_mission_completed_event" />
+      <item itemvalue="Cargo.Test events::station_services::missions::mission_redirected::tests::test_serialize_mission_redirected_event" />
+      <item itemvalue="Cargo.Test mission_accepted::tests" />
+      <item itemvalue="Cargo.Test mission_redirected::tests" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cargo.Test reservoir_replenished::tests" />
-        <item itemvalue="Cargo.Test tests::test_deserialize_serialize_journal_event_cargo" />
-        <item itemvalue="Cargo.Test events::other::reservoir_replenished::tests::test_reservoir_replenished_event_round_trip" />
-        <item itemvalue="Cargo.Test events::trade::mining::tests::test_mining_refined_event_deserialization" />
-        <item itemvalue="Cargo.Test events::other::drone::tests::test_launch_drone_event_deserialization" />
+        <item itemvalue="Cargo.Test mission_failed::tests" />
+        <item itemvalue="Cargo.Test events::station_services::missions::mission_completed::tests::test_deserialize_mission_completed_event" />
+        <item itemvalue="Cargo.Test mission_accepted::tests" />
+        <item itemvalue="Cargo.Test mission_redirected::tests" />
+        <item itemvalue="Cargo.Test events::station_services::missions::mission_redirected::tests::test_serialize_mission_redirected_event" />
       </list>
     </recent_temporary>
   </component>
@@ -397,7 +410,8 @@
     <MESSAGE value="Simplified the file processor by removing file watcher and constructing directly from journal watcher" />
     <MESSAGE value="Fixing some build warnings" />
     <MESSAGE value="Added initial implementation of journal log file parsing that just prints path" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added initial implementation of journal log file parsing that just prints path" />
+    <MESSAGE value="Added the mission accepted event" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the mission accepted event" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

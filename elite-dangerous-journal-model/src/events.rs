@@ -23,6 +23,8 @@ use crate::events::startup::game::{FileHeaderEvent, LoadGameEvent};
 use crate::events::startup::material::MaterialsEvent;
 use crate::events::station_services::engineer::EngineerProgressEvent;
 use crate::events::station_services::missions::mission_accepted::MissionAcceptedEvent;
+use crate::events::station_services::missions::mission_completed::MissionCompletedEvent;
+use crate::events::station_services::missions::mission_redirected::MissionRedirectedEvent;
 use crate::events::trade::mining::MiningRefinedEvent;
 use crate::events::travel::fsd_jump::fsd_jump_event::FSDJumpEvent;
 use crate::events::travel::fsd_target::FSDTargetEvent;
@@ -104,7 +106,11 @@ pub enum JournalEvent {
     MaterialCollected(MaterialCollectedEvent),
     Materials(MaterialsEvent),
     MiningRefined(MiningRefinedEvent),
+    MissionAbandoned(MissionAcceptedEvent),
     MissionAccepted(MissionAcceptedEvent),
+    MissionCompleted(MissionCompletedEvent),
+    MissionFailed(MissionCompletedEvent),
+    MissionRedirected(MissionRedirectedEvent),
     Music(MusicEvent),
     NavRoute(EmptyEvent),
     NavRouteClear(EmptyEvent),

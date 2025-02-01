@@ -1,43 +1,7 @@
 use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
 use crate::events::common::{deconstruct_optional_localised_value, EventMeta, LocalisedValue};
-
-/// The effect of the successful mission
-#[allow(missing_docs)]
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
-#[serde(rename_all = "PascalCase")]
-pub enum MissionEffect {
-    None,
-    Low,
-    Med,
-    High,
-}
-
-impl From<String> for MissionEffect {
-    fn from(value: String) -> Self {
-        match value.as_str() {
-            "None" => MissionEffect::None,
-            "+" => MissionEffect::Low,
-            "++" => MissionEffect::Med,
-            "+++" => MissionEffect::High,
-            _ => panic!("Unknown mission effect"),
-        }
-    }
-}
-
-
-impl MissionEffect {
-
-    /// Convert the mission effect to the string representation that is present in events
-    pub fn to_string(&self) -> String {
-        match self {
-            MissionEffect::None => String::from("None"),
-            MissionEffect::Low => String::from("+"),
-            MissionEffect::Med => String::from("++"),
-            MissionEffect::High => String::from("+++"),
-        }
-    }
-}
+use crate::events::station_services::missions::common::MissionEffect;
 
 /// Enum for passenger type
 #[allow(missing_docs)]
@@ -369,8 +333,8 @@ mod tests {
         // Assert
         assert_eq!(serialized_json["Faction"], "FactionName");
         assert_eq!(serialized_json["MissionID"], 123456);
-        assert_eq!(serialized_json["Influence"], "++");
-        assert_eq!(serialized_json["Reputation"], "+++");
+        assert_eq!(serialized_json["Influence"], "+++");
+        assert_eq!(serialized_json["Reputation"], "++++");
         assert_eq!(serialized_json["PassengerVIPs"], true);
         assert_eq!(serialized_json["PassengerType"], "Tourist");
         assert_eq!(serialized_json["Target"], "TargetEntity");
@@ -436,7 +400,7 @@ mod tests {
         // Assert
         assert_eq!(serialized_json["Faction"], "FactionName");
         assert_eq!(serialized_json["MissionID"], 123456);
-        assert_eq!(serialized_json["Influence"], "+");
+        assert_eq!(serialized_json["Influence"], "++");
         assert_eq!(serialized_json["Reputation"], "None");
         assert_eq!(serialized_json["Faction"], "FactionName");
         
@@ -483,8 +447,8 @@ mod tests {
         assert_eq!(deserialized.faction, "FactionName");
         assert_eq!(deserialized.name.value, "MissionName");
         assert_eq!(deserialized.mission_id, 123456);
-        assert_eq!(deserialized.influence, MissionEffect::Med);
-        assert_eq!(deserialized.reputation, MissionEffect::High);
+        assert_eq!(deserialized.influence, MissionEffect::Low);
+        assert_eq!(deserialized.reputation, MissionEffect::Med);
         assert_eq!(deserialized.passenger_count, Some(20));
         assert_eq!(deserialized.passenger_type, Some(PassengerType::Tourist));
         assert_eq!(deserialized.destination_station, Some("DestinationStation".to_string()));
@@ -512,7 +476,7 @@ mod tests {
         assert_eq!(deserialized.faction, "FactionName");
         assert_eq!(deserialized.name.value, "MissionName");
         assert_eq!(deserialized.mission_id, 123456);
-        assert_eq!(deserialized.influence, MissionEffect::Low);
+        assert_eq!(deserialized.influence, MissionEffect::VeryLow);
         assert_eq!(deserialized.reputation, MissionEffect::None);
         assert!(deserialized.commodity.is_none());
     }
