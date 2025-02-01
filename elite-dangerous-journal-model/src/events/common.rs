@@ -52,6 +52,27 @@ pub struct LocalisedValue {
 }
 
 impl LocalisedValue {
+    
+    /// Create a localised value
+    pub fn new(value: String, localised_value: Option<String>) -> Self {
+        Self { value, localised_value }
+    }
+    
+    /// Create a localised value option
+    pub fn new_optional(value: Option<String>, localised_value: Option<String>) -> Option<Self> {
+        match value {
+            None => None,
+            Some(v) => {
+                if let Some(lv) = localised_value {
+                    Some(LocalisedValue { value: v, localised_value: Some(lv) })
+                } else {
+                    Some(LocalisedValue { value: v, localised_value: None })
+                }
+            }
+        }
+    }
+    
+    
     /// If the localise value is present it will return that value otherwise it returns the value
     pub fn get_value(&self) -> &str {
 
@@ -60,5 +81,19 @@ impl LocalisedValue {
         }
 
         self.value.as_str()
+    }
+    
+}
+
+/// Allows getting the value and localised from a single call
+pub fn deconstruct_localised_value(value: LocalisedValue) -> (String, Option<String>) {
+    (String::from(value.get_value()), value.localised_value)
+}
+
+/// Allows getting the value and localised from an optional localised value from a single call
+pub fn deconstruct_optional_localised_value(value: Option<LocalisedValue>) -> (Option<String>, Option<String>) {
+    match value {
+        None => (None, None),
+        Some(v) => (Some(String::from(v.get_value())), v.localised_value)
     }
 }
