@@ -8,14 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Added simple pirate massacre helper functionality">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-tui/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/pirate_massacre_helper.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/pirate_massacre_plugin.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/pirate_massacre_helper/model.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/pirate_massacre_plugin/model.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev/model_work" />
+        <entry key="$PROJECT_DIR$" value="dev/tui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

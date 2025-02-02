@@ -109,6 +109,9 @@ async fn main() -> Result<(),String> {
             
         }
     });
+
+    // We use -1 to ensure that we get at least the first update
+    let mut mission_count : i64 = -1;
     
     let pmm_ref = pmm.clone();
     task_set.spawn(async move {
@@ -117,17 +120,21 @@ async fn main() -> Result<(),String> {
             
             match missions {
                 Ok(missions) => {
-                    println!("--------------- Missions Count: {} -------------------", missions.len());
 
-                    missions.iter().for_each(|s| {
-                        let ((faction, target_system, target_faction), count) = s;
-                        println!("Target System: {}, Target Faction: {}, Faction: {}, Count {}", target_system, target_faction, faction, count );
-                    });
-                    println!("------------------------------------------------------");
+                    if mission_count != missions.len() as i64 {
+
+                        mission_count = missions.len() as i64;
+                        println!("--------------- Missions Count: {} -------------------", mission_count);
+                        missions.iter().for_each(|s| {
+                            let ((faction, target_system, target_faction), count) = s;
+                            println!("Target System: {}, Target Faction: {}, Faction: {}, Count {}", target_system, target_faction, faction, count);
+                        });
+                        println!("------------------------------------------------------");
+                    }
                 }
                 Err(e) => {  error!("Failed to get missions: {}", e); }
             }
-            tokio::time::sleep(tokio::time::Duration::from_secs(10)).await;
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
         }
     });
 
