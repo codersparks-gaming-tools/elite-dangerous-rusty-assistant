@@ -1,8 +1,6 @@
 mod model;
 
 use std::collections::HashMap;
-use crate::pirate_massacre_helper::model::PirateMassacreMission;
-use crate::EliteDangerousEventProcessor;
 use elite_dangerous_journal_model::events::station_services::missions::mission_accepted::MissionAcceptedEvent;
 use elite_dangerous_journal_model::events::station_services::missions::mission_completed::MissionCompletedEvent;
 use elite_dangerous_journal_model::events::EliteDangerousEvent;
@@ -14,17 +12,21 @@ use surrealdb::engine::local::Db;
 use surrealdb::Surreal;
 use surrealdb::Result;
 use tracing::{debug, trace};
+use crate::EliteDangerousEventProcessor;
+use crate::pirate_massacre_plugin::model::PirateMassacreMission;
 
-const DATABASE_NAMESPACE: &str = "pirate_massacre_helper";
+
+
+
+const DATABASE_NAMESPACE: &str = "pirate_massacre_plugin";
 const DATABASE_NAME: &str = "data";
 const RECORD_NAME: &str = "massacre_mission";
 
-
-pub struct PirateMassacreHelper {
+pub struct PirateMassacrePlugin {
     db: Arc<Surreal<Db>>,
 }
 
-impl PirateMassacreHelper {
+impl PirateMassacrePlugin {
     pub async fn new(db: Arc<Surreal<Db>>) -> Self {
         Self { db }
     }
@@ -121,7 +123,7 @@ impl PirateMassacreHelper {
     }
 }
 
-impl EliteDangerousEventProcessor for PirateMassacreHelper {
+impl EliteDangerousEventProcessor for PirateMassacrePlugin {
     async fn process_event(
         &self,
         event: Arc<EliteDangerousEvent>,

@@ -10,10 +10,10 @@ use tokio::signal;
 use tokio::sync::mpsc::channel;
 use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
-use edra::EliteDangerousEventProcessor;
-use edra::pirate_massacre_helper::PirateMassacreHelper;
 use elite_dangerous_journal_watcher::elite_journal_watcher;
 use elite_dangerous_journal_watcher::processor::journal_file_processor::JournalFileProcessor;
+use elite_dangerous_rusty_assistant_plugins::EliteDangerousEventProcessor;
+use elite_dangerous_rusty_assistant_plugins::pirate_massacre_plugin::PirateMassacrePlugin;
 use crate::command_line::process_command_line_args;
 
 #[tokio::main]
@@ -61,9 +61,9 @@ async fn main() -> Result<(),String> {
     let db : Surreal<Db> = Surreal::new::<RocksDb>(db_dir).await.expect("Failed to create surreal db handle");
     
     let db_ref = Arc::new(db);
-    let pmm = Arc::new(PirateMassacreHelper::new(db_ref.clone()).await);
+    let pmm = Arc::new(PirateMassacrePlugin::new(db_ref.clone()).await);
     
-    let helpers = vec![pmm.clone()];
+    let plugins = vec![pmm.clone()];
 
 
     let mut task_set = JoinSet::new();
@@ -102,8 +102,8 @@ async fn main() -> Result<(),String> {
             info!("{:?}", event);
             
             let event_ref = Arc::new(event);
-            for helper in helpers.iter() {
-                helper.process_event(event_ref.clone()).await.expect("Failed to process event");
+            for plugin in plugins.iter() {
+                plugin.process_event(event_ref.clone()).await.expect("Failed to process event");
             }
             
             
