@@ -9,6 +9,7 @@ pub struct PirateMassacreMission {
     pub target_faction: String,
     pub target_system: String,
     pub target_station: String,
-    pub count: u64
+    pub count: u64,
+    pub redirected: bool,
     
 }

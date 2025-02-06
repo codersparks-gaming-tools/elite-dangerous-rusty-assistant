@@ -6,5 +6,5 @@ edition = "2021"
 [dependencies]
 elite-dangerous-journal-model = { path = "../elite-dangerous-journal-model"}
 surrealdb = { version = "2.1.4", features = ["kv-rocksdb"] }
-tracing = "0.1.41"
-serde = { version = "1.0.217", features = ["derive"] }
+tracing = { workspace = true }
+serde = {workspace = true, features = ["derive"] }

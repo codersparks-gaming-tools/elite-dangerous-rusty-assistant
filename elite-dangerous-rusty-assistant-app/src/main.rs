@@ -113,17 +113,17 @@ async fn main() -> Result<(),String> {
     let pmm_ref = pmm.clone();
     task_set.spawn(async move {
         loop {
-            let missions = pmm_ref.get_mission_summary_by_faction().await;
+            let missions = pmm_ref.get_mission_summary_by_faction(true).await;
             
             match missions {
-                Ok(missions) => {
-                    println!("--------------- Missions Count: {} -------------------", missions.len());
+                Ok((missions, remaining_mission_count, total_mission_count)) => {
+                    println!("--------------- Remaining Missions: {} Total: {} ---------------------", remaining_mission_count, total_mission_count);
 
                     missions.iter().for_each(|s| {
                         let ((faction, target_system, target_faction), count) = s;
                         println!("Target System: {}, Target Faction: {}, Faction: {}, Count {}", target_system, target_faction, faction, count );
                     });
-                    println!("------------------------------------------------------");
+                    println!("--------------------------------------------------------------------");
                 }
                 Err(e) => {  error!("Failed to get missions: {}", e); }
             }
