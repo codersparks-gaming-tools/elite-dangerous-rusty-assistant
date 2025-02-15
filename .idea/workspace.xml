@@ -7,24 +7,15 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Refactored ready for tui and updated the masscre misison summary">
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/fss_all_bodies_found.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/fss_body_signals.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration/fss_discovery_scan.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/exobiology_assistant.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/exobiology_assistant/event_processor.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/exobiology_assistant/model.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_02_2025_10_15_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_02_2025_10_15__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2025_17_41_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2025_17_41__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_02_02_2025_10_16_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_02_02_2025_10_16__Changes_.xml" beforeDir="false" />
+    <list default="true" id="1c462f37-3047-402f-a0fa-b5c404385d35" name="Changes" comment="Initial implementation for exo biology">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-journal-model/src/events/exploration.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-plugins/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-tui/Cargo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-tui/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/elite-dangerous-rusty-assistant-app/src/defaulit_plugin.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +325,7 @@
       <workItem from="1738853761432" duration="8998000" />
       <workItem from="1739005567414" duration="4290000" />
       <workItem from="1739115190487" duration="184000" />
-      <workItem from="1739611976035" duration="9580000" />
+      <workItem from="1739611976035" duration="11845000" />
     </task>
     <task id="LOCAL-00001" summary="Added cargo event and also added a &quot;get_value&quot; function from localised value to automatically return either the localised value if present or the value">
       <option name="closed" value="true" />
@@ -448,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738862213340</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Initial implementation for exo biology">
+      <option name="closed" value="true" />
+      <created>1739632674811</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739632674812</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +479,8 @@
     <MESSAGE value="Added code so that pirate massacre plugin data is only polled every two seconds" />
     <MESSAGE value="Backed out change to check mission length" />
     <MESSAGE value="Refactored ready for tui and updated the masscre misison summary" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored ready for tui and updated the masscre misison summary" />
+    <MESSAGE value="Initial implementation for exo biology" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial implementation for exo biology" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -13,8 +13,3 @@ pub trait EliteDangerousPlugin {
 pub trait EliteDangerousEventProcessor {
     fn process_event(&self, event: Arc<EliteDangerousEvent>) -> impl Future<Output= Result<(), String>> + Send;
 }
-
-pub trait EliteDangerousVisualizationComponent {
-    fn render(&self) -> String;
-}
-

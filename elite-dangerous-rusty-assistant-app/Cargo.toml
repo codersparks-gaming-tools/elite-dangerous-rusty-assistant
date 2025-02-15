@@ -14,3 +14,5 @@ elite-dangerous-journal-watcher = { path = "../elite-dangerous-journal-watcher"}
 elite-dangerous-rusty-assistant-plugins = { path = "../elite-dangerous-rusty-assistant-plugins" }
 surrealdb = { workspace = true, features = ["kv-rocksdb"] }
 tracing-appender = {workspace = true }
+ratatui = "0.29.0"
+color-eyre = "0.6.3"

@@ -1,8 +1,12 @@
 //! This crate contains the application to run elite dangerous rusty assistant
 
 mod command_line;
+mod defaulit_plugin;
 
 use std::sync::Arc;
+use color_eyre::Result;
+use ratatui::Frame;
+use ratatui::layout::Rect;
 use surrealdb::engine::local::{Db, RocksDb};
 use surrealdb::Surreal;
 use tokio::fs::create_dir_all;
@@ -12,7 +16,7 @@ use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
 use elite_dangerous_journal_watcher::elite_journal_watcher;
 use elite_dangerous_journal_watcher::processor::journal_file_processor::JournalFileProcessor;
-use elite_dangerous_rusty_assistant_plugins::EliteDangerousEventProcessor;
+use elite_dangerous_rusty_assistant_plugins::{EliteDangerousEventProcessor, EliteDangerousPlugin};
 use elite_dangerous_rusty_assistant_plugins::exobiology_assistant::ExobiologyAssistantPlugin;
 use elite_dangerous_rusty_assistant_plugins::pirate_massacre_plugin::PirateMassacrePlugin;
 use crate::command_line::process_command_line_args;
@@ -137,3 +141,4 @@ async fn main() -> Result<(),String> {
     }
 
 }
+
