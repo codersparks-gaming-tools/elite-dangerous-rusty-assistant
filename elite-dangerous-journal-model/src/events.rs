@@ -12,6 +12,9 @@ use crate::events::common::EmptyEvent;
 use crate::events::exploration::fss_signal_discovered::FSSSignalDiscoveredEvent;
 use crate::events::exploration::material_collected::MaterialCollectedEvent;
 use crate::events::exploration::scan::event::ScanEvent;
+use exploration::fss_body_signals::FSSBodySignalsEvent;
+use crate::events::exploration::fss_all_bodies_found::FSSAllBodiesFoundEvent;
+use crate::events::exploration::fss_discovery_scan::FSSDiscoveryScanEvent;
 use crate::events::odyssey::ship_locker::ShipLockerEvent;
 use crate::events::other::drone::LaunchDroneEvent;
 use crate::events::other::fuel_scoop::FuelScoopEvent;
@@ -99,6 +102,9 @@ pub enum JournalEvent {
     FileHeader(FileHeaderEvent),
     FSDJump(FSDJumpEvent),
     FSDTarget(FSDTargetEvent),
+    FSSAllBodiesFound(FSSAllBodiesFoundEvent),
+    FSSBodySignals(FSSBodySignalsEvent),
+    FSSDiscoveryScan(FSSDiscoveryScanEvent),
     FSSSignalDiscovered(FSSSignalDiscoveredEvent),
     FuelScoop(FuelScoopEvent),
     LaunchDrone(LaunchDroneEvent),

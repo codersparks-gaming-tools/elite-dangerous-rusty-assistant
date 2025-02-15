@@ -13,6 +13,7 @@ use tracing::{debug, error, info, trace};
 use elite_dangerous_journal_watcher::elite_journal_watcher;
 use elite_dangerous_journal_watcher::processor::journal_file_processor::JournalFileProcessor;
 use elite_dangerous_rusty_assistant_plugins::EliteDangerousEventProcessor;
+use elite_dangerous_rusty_assistant_plugins::exobiology_assistant::ExobiologyAssistantPlugin;
 use elite_dangerous_rusty_assistant_plugins::pirate_massacre_plugin::PirateMassacrePlugin;
 use crate::command_line::process_command_line_args;
 
@@ -62,8 +63,9 @@ async fn main() -> Result<(),String> {
     
     let db_ref = Arc::new(db);
     let pmm = Arc::new(PirateMassacrePlugin::new(db_ref.clone()).await);
+    let exo_assistant = Arc::new(ExobiologyAssistantPlugin::new(db_ref.clone()).await);
     
-    let plugins = vec![pmm.clone()];
+    let plugin = exo_assistant.clone();
 
 
     let mut task_set = JoinSet::new();
@@ -102,9 +104,7 @@ async fn main() -> Result<(),String> {
             info!("{:?}", event);
             
             let event_ref = Arc::new(event);
-            for plugin in plugins.iter() {
-                plugin.process_event(event_ref.clone()).await.expect("Failed to process event");
-            }
+            plugin.process_event(event_ref.clone()).await.expect("Failed to process event");
             
             
         }
