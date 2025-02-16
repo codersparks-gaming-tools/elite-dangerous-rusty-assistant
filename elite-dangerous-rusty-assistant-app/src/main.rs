@@ -1,29 +1,22 @@
-//! This crate contains the application to run elite dangerous rusty assistant
-
 mod command_line;
 
 use std::sync::Arc;
-use surrealdb::engine::local::{Db, RocksDb};
-use surrealdb::Surreal;
 use tokio::fs::create_dir_all;
 use tokio::signal;
-use tokio::sync::mpsc::channel;
 use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
 use elite_dangerous_journal_watcher::elite_journal_watcher;
 use elite_dangerous_journal_watcher::processor::journal_file_processor::JournalFileProcessor;
-use elite_dangerous_rusty_assistant_plugins::EliteDangerousEventProcessor;
-use elite_dangerous_rusty_assistant_plugins::exobiology_assistant::ExobiologyAssistantPlugin;
-use elite_dangerous_rusty_assistant_plugins::pirate_massacre_plugin::PirateMassacrePlugin;
+use elite_dangerous_rusty_assistant::EliteDangerousRustyAssistant;
+use elite_dangerous_rusty_assistant::traits::EDRAComponent;
 use crate::command_line::process_command_line_args;
 
 #[tokio::main]
 async fn main() -> Result<(),String> {
-    
     let cli_args = process_command_line_args().expect("Unable to parse command line arguments");
-    
+
     let log_level = cli_args.log_level;
-    
+
     if ! cli_args.journal_dir.exists() {
         let message = "Cannot find journal directory";
         println!("{}", message);
@@ -44,7 +37,7 @@ async fn main() -> Result<(),String> {
 
     let log_dir = data_dir.join("logs");
     let file_appender = tracing_appender::rolling::daily(log_dir, "edra.log");
-    
+
     // We have to actually name the guard variable to allow it to only be dropped at the end of main
     // see https://docs.rs/tracing-appender/latest/tracing_appender/non_blocking/struct.WorkerGuard.html
     // for more details
@@ -54,31 +47,24 @@ async fn main() -> Result<(),String> {
         .with_ansi(false)          // Remove the colour
         .with_max_level(log_level)      // Set the max log level to show
         .init();
-    
+
     trace!("cli args: {cli_args:#?}");
 
     let db_dir = data_dir.join("db");
+    let edra = EliteDangerousRustyAssistant::new(db_dir).await;
     
-    let db : Surreal<Db> = Surreal::new::<RocksDb>(db_dir).await.expect("Failed to create surreal db handle");
+    let edra = Arc::new(edra);
     
-    let db_ref = Arc::new(db);
-    let pmm = Arc::new(PirateMassacrePlugin::new(db_ref.clone()).await);
-    let exo_assistant = Arc::new(ExobiologyAssistantPlugin::new(db_ref.clone()).await);
-    
-    let plugin = exo_assistant.clone();
-
-
     let mut task_set = JoinSet::new();
-    let journal_dir = cli_args.journal_dir.to_path_buf().clone();
+    let journal_dir = cli_args.journal_dir.clone();
+
+    debug!("Starting Journal watcher");
+
+    let (event_tx, mut event_rx) = tokio::sync::mpsc::channel(1024);
+    let (terminate_tx, terminate_rx) = tokio::sync::oneshot::channel::<()>();
 
     
-    
-    debug!("Staring journal watcher");
-    
-    let (event_tx, mut event_rx) = channel(1024);
     let processor = Arc::new(JournalFileProcessor::new(event_tx, cli_args.sender_timeout));
-
-    let (terminate_tx, terminate_rx) = futures::channel::oneshot::channel::<()>();
 
     task_set.spawn(async move {
         elite_journal_watcher::start(config_dir, journal_dir, processor, terminate_rx).await;
@@ -88,48 +74,42 @@ async fn main() -> Result<(),String> {
 
     task_set.spawn(async move {
         match signal::ctrl_c().await {
-            Ok(()) => {
-                info!("CTRL-C pressed, shutting down");
+            Ok(_) => {
+                info!("Received Ctrl+C");
                 terminate_tx.send(()).expect("Failed to send shutdown message");
             }
             Err(e) => {
-                error!("Unable to listen for shutdown signal: {}", e);
+                info!("Error receiving Ctrl+C: {}", e);
             }
         }
     });
-    
+
+    debug!("Started signal handler");
+
+    let edra_ref_processing = edra.clone();
     task_set.spawn(async move {
-        
+
         while let Some(event) = event_rx.recv().await {
-            info!("{:?}", event);
-            
+            debug!("Received event: {:?}", event);
+
             let event_ref = Arc::new(event);
-            plugin.process_event(event_ref.clone()).await.expect("Failed to process event");
-            
-            
+            match edra_ref_processing.process_event(event_ref).await {
+                Ok(_) => {}
+                Err(e) => { error!("Failed to process event: {}", e); }
+            }
         }
     });
+
+    debug!("Started event processor(s)");
     
-    let pmm_ref = pmm.clone();
+    let edra_ref_render = edra.clone();
     task_set.spawn(async move {
         loop {
-            let missions = pmm_ref.get_mission_summary_by_faction(true).await;
-            
-            match missions {
-                Ok((missions, remaining_mission_count, total_mission_count)) => {
-                    println!("--------------- Remaining Missions: {} Total: {} ---------------------", remaining_mission_count, total_mission_count);
-
-                    missions.iter().for_each(|s| {
-                        let ((faction, target_system, target_faction), count) = s;
-                        println!("Target System: {}, Target Faction: {}, Faction: {}, Count {}", target_system, target_faction, faction, count );
-                    });
-                    println!("--------------------------------------------------------------------");
-                }
-                Err(e) => {  error!("Failed to get missions: {}", e); }
-            }
-            tokio::time::sleep(tokio::time::Duration::from_secs(10)).await;
+            edra_ref_render.render().await;
+            tokio::time::sleep(std::time::Duration::from_secs(10)).await;
         }
     });
+
 
     match task_set.join_next().await.expect("Failed to join thread") {
         Ok(_) => {Ok(())}

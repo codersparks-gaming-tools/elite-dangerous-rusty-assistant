@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = [ "elite-dangerous-journal-model", "elite-dangerous-journal-watcher", "elite-dangerous-rusty-assistant-app", "elite-dangerous-rusty-assistant-tui", "elite-dangerous-rusty-assistant-plugins"]
+members = [ "elite-dangerous-journal-model", "elite-dangerous-journal-watcher", "elite-dangerous-rusty-assistant", "elite-dangerous-rusty-assistant-app"]
 
 
 [workspace.dependencies]

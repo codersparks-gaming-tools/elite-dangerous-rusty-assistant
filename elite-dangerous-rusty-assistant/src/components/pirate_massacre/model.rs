@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PirateMassacreMission {
-    
+
     pub mission_id: u64,
     pub faction: String,
     pub target_type: String,
@@ -11,5 +11,5 @@ pub struct PirateMassacreMission {
     pub target_station: String,
     pub count: u64,
     pub redirected: bool,
-    
+
 }

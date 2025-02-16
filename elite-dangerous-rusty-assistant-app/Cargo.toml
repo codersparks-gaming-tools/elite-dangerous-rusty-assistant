@@ -4,13 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-futures = {workspace = true }
-tokio = { workspace = true  , features = ["full"]}
-tracing = { workspace = true }
-tracing-subscriber = {workspace = true }
+elite-dangerous-rusty-assistant = { path="../elite-dangerous-rusty-assistant"}
+elite-dangerous-journal-watcher = { path="../elite-dangerous-journal-watcher"}
 clap = { workspace = true, features = ["derive"] }
+tokio = { workspace = true  , features = ["full"]}
 directories = {workspace = true }
-elite-dangerous-journal-watcher = { path = "../elite-dangerous-journal-watcher"}
-elite-dangerous-rusty-assistant-plugins = { path = "../elite-dangerous-rusty-assistant-plugins" }
-surrealdb = { workspace = true, features = ["kv-rocksdb"] }
+tracing = { workspace = true }
 tracing-appender = {workspace = true }
+tracing-subscriber = {workspace = true }

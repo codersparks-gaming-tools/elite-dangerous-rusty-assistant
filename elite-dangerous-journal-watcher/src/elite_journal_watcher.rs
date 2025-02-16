@@ -2,9 +2,9 @@ use std::path::{Path};
 use std::time::Duration;
 use std::sync::{Arc, RwLock};
 use futures::{SinkExt, StreamExt};
-use futures::channel::oneshot::Receiver;
 use notify::RecursiveMode;
 use notify_debouncer_full::{new_debouncer, DebounceEventResult};
+use tokio::sync::oneshot::Receiver;
 use tokio::task::JoinSet;
 use tracing::{debug, error, info};
 use crate::config::JournalWatcherConfig;
@@ -47,9 +47,9 @@ use crate::processor::NotifierProcessor;
 ///         Err(e) => { Err(e.to_string()) }
 ///     }
 ///```
-pub async fn start<D, P>(working_dir: D, journal_dir: D, processor: Arc<P>, terminate_rx: Receiver<()>)
+pub async fn start<D, P>(config_dir: D, journal_dir: D, processor: Arc<P>, terminate_rx: Receiver<()>)
 where D: AsRef<Path>, P: NotifierProcessor + Send + Sync + 'static {
-    let config = JournalWatcherConfig::new(working_dir.as_ref().to_path_buf());
+    let config = JournalWatcherConfig::new(config_dir.as_ref().to_path_buf());
 
     debug!("Config: {:?}", config);
     

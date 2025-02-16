@@ -1,20 +1,30 @@
-use crate::pirate_massacre_plugin::model::PirateMassacreMission;
-use crate::pirate_massacre_plugin::{DATABASE_NAME, DATABASE_NAMESPACE, RECORD_NAME};
-use crate::EliteDangerousEventProcessor;
-use elite_dangerous_journal_model::events::EliteDangerousEvent;
-use elite_dangerous_journal_model::events::JournalEvent::{
-    MissionAbandoned, MissionAccepted, MissionCompleted, MissionFailed, MissionRedirected,
-};
+use std::collections::HashMap;
 use std::sync::Arc;
 use surrealdb::engine::local::Db;
 use surrealdb::Surreal;
-use tracing::{debug, trace};
+use tracing::{debug, error, trace};
+use elite_dangerous_journal_model::events::EliteDangerousEvent;
+use elite_dangerous_journal_model::events::JournalEvent::{MissionAbandoned, MissionAccepted, MissionCompleted, MissionFailed, MissionRedirected};
+use crate::components::pirate_massacre::model::PirateMassacreMission;
+use crate::traits::EDRAComponent;
 
-pub struct PirateMassacreEventProcessor {
+pub const DATABASE_NAMESPACE: &str = "pirate_massacre";
+pub const DATABASE_NAME: &str = "missions";
+pub const RECORD_NAME: &str = "mission";
+
+pub struct PirateMassacreComponent {
     db: Arc<Surreal<Db>>,
 }
 
-impl EliteDangerousEventProcessor for PirateMassacreEventProcessor {
+impl EDRAComponent for PirateMassacreComponent {
+    fn name(&self) -> String {
+        "Pirate Massacre Mission Helper".to_string()
+    }
+
+    fn description(&self) -> String {
+        "Keeps track of pirate massacre missions".to_string()
+    }
+
     async fn process_event(&self, event: Arc<EliteDangerousEvent>) -> Result<(), String> {
         match event.as_ref() {
             EliteDangerousEvent::JournalEvent(je) => match je {
@@ -67,7 +77,7 @@ impl EliteDangerousEventProcessor for PirateMassacreEventProcessor {
                             &*mr.new_destination_system,
                             &*mr.new_destination_station,
                         )
-                        .await
+                            .await
                     } else {
                         trace!("Not a massacre mission");
                         Ok(())
@@ -80,8 +90,29 @@ impl EliteDangerousEventProcessor for PirateMassacreEventProcessor {
             },
         }
     }
+
+    async fn render(&self) {
+        
+
+        let missions = self.get_mission_summary_by_faction(true).await;
+
+        match missions {
+            Ok((missions, remaining_mission_count, total_mission_count)) => {
+                println!("--------------- Remaining Missions: {} Total: {} ---------------------", remaining_mission_count, total_mission_count);
+
+                missions.iter().for_each(|s| {
+                    let ((faction, target_system, target_faction), count) = s;
+                    println!("Target System: {}, Target Faction: {}, Faction: {}, Count {}", target_system, target_faction, faction, count );
+                });
+                println!("--------------------------------------------------------------------");
+            }
+            Err(e) => {  error!("Failed to get missions: {}", e); }
+        }
+        tokio::time::sleep(tokio::time::Duration::from_secs(10)).await;
+        
+    }
 }
-impl PirateMassacreEventProcessor {
+impl PirateMassacreComponent {
     pub fn new(db: Arc<Surreal<Db>>) -> Self {
         Self { db }
     }
@@ -168,5 +199,44 @@ impl PirateMassacreEventProcessor {
             }
             Err(e) => Err(e.to_string()),
         }
+    }
+
+    pub async fn get_all_missions(&self) -> Result<Vec<PirateMassacreMission>, String> {
+        self.db.use_ns(DATABASE_NAMESPACE).use_db(DATABASE_NAME).await.unwrap();
+
+        let select_result : surrealdb::Result<Vec<PirateMassacreMission>> = self.db.select(RECORD_NAME).await;
+
+        match select_result {
+            Ok(records) => {
+                Ok(records)
+            }
+            Err(e) => {
+                Err(e.to_string())
+            }
+        }
+    }
+
+    pub async fn get_mission_summary_by_faction(&self, filter_redirected:bool) -> Result<(HashMap<(String, String, String), u64>, u64, u64), String> {
+
+        let missions = self.get_all_missions().await?;
+        let total_missions = missions.len() as u64;
+        let mut remaining_active_misisons = 0;
+
+        let mut missions_summary: HashMap<(String, String, String), u64> = HashMap::new();
+
+        missions.into_iter().for_each(|m| {
+
+            if filter_redirected && m.redirected {
+                debug!("Skipping redirected mission");
+            } else {
+                let key = (m.faction, m.target_system, m.target_faction);
+                let count = m.count;
+                let current_count = missions_summary.entry(key).or_insert(0);
+                *current_count += count;
+                remaining_active_misisons += 1;
+            }
+        });
+
+        Ok((missions_summary, remaining_active_misisons, total_missions))
     }
 }

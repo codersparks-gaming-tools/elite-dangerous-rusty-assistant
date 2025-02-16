@@ -73,11 +73,15 @@ impl From<Signal> for SignalSchema {
     }
 }
 
+/// Enum to match the signal type
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(rename_all = "PascalCase")]
 pub enum SignalType {
+    /// The signal type is biological
     Biological,
+    /// The signal type is Geological
     Geological,
+    /// Catch all for error handling
     Other(String)
 }
 

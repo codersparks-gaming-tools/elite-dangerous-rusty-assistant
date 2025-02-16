@@ -1,0 +1,12 @@
+[package]
+name = "elite-dangerous-rusty-assistant"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+elite-dangerous-journal-model = { path="../elite-dangerous-journal-model" }
+
+surrealdb = { workspace = true, features = ["kv-rocksdb"] }
+tracing = { workspace = true }
+serde = { workspace = true, features=["derive"]}
+tokio = { workspace = true, features=["full"]}
